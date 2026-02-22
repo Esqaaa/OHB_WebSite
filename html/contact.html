@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — OHB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="50" height="50" />
+        <div class="nav__logo-text">OHB<span>Orchestre d'Harmonie de Beinheim</span></div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="concerts.html">Concerts</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+      </ul>
+      <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobileMenu"><ul>
+    <li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li>
+    <li><a href="concerts.html">Concerts</a></li><li><a href="galerie.html">Galerie</a></li>
+    <li><a href="contact.html">Contact</a></li><li><a href="mentions-legales.html">Mentions légales</a></li>
+  </ul></div>
+
+  <header class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('../photos/hero/hero-contact.jpg')"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__content"><p class="label">Écrire à l'OHB</p><h1>Contact</h1></div>
+  </header>
+
+  <section class="section section--dark">
+    <div class="container">
+      <div class="contact-grid fade-up">
+        <div class="contact-info">
+          <p class="label">Coordonnées</p>
+          <h3>Restons en contact</h3>
+          <div class="divider"></div>
+          <div class="contact-info-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+            <div><strong style="display:block;color:var(--white);margin-bottom:.2rem">Email</strong><a href="mailto:contact@orchestrebeinheim.com">contact@orchestrebeinheim.com</a></div>
+          </div>
+          <div class="contact-info-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+            <div><strong style="display:block;color:var(--white);margin-bottom:.2rem">Adresse</strong><span>Beinheim, Bas-Rhin (67)<br>Alsace, France</span></div>
+          </div>
+          <div class="contact-info-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+            <div><strong style="display:block;color:var(--white);margin-bottom:.2rem">Répétitions</strong><span>Hebdomadaires — nous contacter pour les horaires</span></div>
+          </div>
+          <div style="margin-top:2rem;padding:1.5rem;background:var(--dark-2);border:1px solid var(--dark-3);border-radius:4px">
+            <p class="label" style="margin-bottom:.8rem">Suivez-nous</p>
+            <div class="footer__socials">
+              <a href="#" class="footer__social-link" aria-label="Facebook" style="width:42px;height:42px"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+              <a href="mailto:contact@orchestrebeinheim.com" class="footer__social-link" aria-label="Email" style="width:42px;height:42px"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="label">Formulaire</p>
+          <h3 style="color:var(--white);margin-bottom:1.5rem">Envoyez-nous un message</h3>
+          <form id="contactForm" novalidate aria-label="Formulaire de contact">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+              <div class="form-group">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
+                <p class="error" role="alert">Veuillez saisir votre nom.</p>
+              </div>
+              <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required />
+                <p class="error" role="alert">Veuillez saisir votre prénom.</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+              <p class="error" role="alert">Veuillez saisir un email valide.</p>
+            </div>
+            <div class="form-group">
+              <label for="sujet">Sujet</label>
+              <select id="sujet" name="sujet">
+                <option value="">Choisir un sujet…</option>
+                <option value="information">Demande d'information</option>
+                <option value="recrutement">Rejoindre l'orchestre</option>
+                <option value="concert">Information concert</option>
+                <option value="presse">Presse / média</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Votre message…" required></textarea>
+              <p class="error" role="alert">Veuillez saisir votre message.</p>
+            </div>
+            <button type="submit" class="btn btn--filled">Envoyer le message</button>
+          </form>
+          <div class="form-success" id="formSuccess" role="status">
+            ✓ Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__logo"><img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="40" height="40" /><span class="footer__logo-text">Orchestre d'Harmonie de Beinheim</span></div>
+        <p>Association musicale fondée en 2001.</p>
+        <div class="footer__socials"><a href="#" class="footer__social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div>
+      </div>
+      <div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="concerts.html">Concerts</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Liens</h4><ul><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="a-propos.html#recrutement">Nous rejoindre</a></li></ul></div>
+      <div class="footer__address"><h4>Adresse</h4><p>Beinheim, Bas-Rhin (67)<br>Alsace, France<br><br><a href="mailto:contact@orchestrebeinheim.com">contact@orchestrebeinheim.com</a></p></div>
+    </div>
+    <div class="footer__bottom"><p>&copy; 2024 Orchestre d'Harmonie de Beinheim — Association loi 1901</p><p><a href="mentions-legales.html">Mentions légales</a></p></div>
+  </div></footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

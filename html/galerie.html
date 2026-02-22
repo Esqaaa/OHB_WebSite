@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Galerie photos de l'Orchestre d'Harmonie de Beinheim." />
+  <title>Galerie — OHB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="50" height="50" />
+        <div class="nav__logo-text">OHB<span>Orchestre d'Harmonie de Beinheim</span></div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="concerts.html">Concerts</a></li>
+        <li><a href="galerie.html" class="active">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+      </ul>
+      <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="concerts.html">Concerts</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul>
+  </div>
+
+  <header class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('../photos/hero/hero-galerie.jpg')"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__content">
+      <p class="label">Photos</p>
+      <h1>Galerie</h1>
+    </div>
+  </header>
+
+  <section class="section section--dark">
+    <div class="container">
+      <div class="fade-up" style="margin-bottom:2rem">
+        <div class="gallery-filter" role="group" aria-label="Filtrer les photos">
+          <button class="filter-btn active" data-filter="all">Toutes les photos</button>
+          <button class="filter-btn" data-filter="concerts">Concerts</button>
+          <button class="filter-btn" data-filter="repetitions">Répétitions</button>
+          <button class="filter-btn" data-filter="animations">Animations</button>
+        </div>
+      </div>
+
+      <div class="gallery-grid" role="list" style="grid-auto-rows:240px">
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/concerts/concert-04.jpg" alt="Concert de l'OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/concerts/concert-02.jpg" alt="Musiciens de l'OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="repetitions" role="listitem">
+          <img src="../photos/galerie/galerie-01.jpg" alt="OHB en répétition" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/galerie/galerie-02.jpg" alt="L'OHB sur scène" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/concerts/concert-03.jpg" alt="Concert OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="animations" role="listitem">
+          <img src="../photos/galerie/galerie-04.jpg" alt="Animation OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/concerts/concert-01.jpg" alt="OHB concert" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="repetitions" role="listitem">
+          <img src="../photos/galerie/galerie-05.jpg" alt="Répétition OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/galerie/galerie-03.jpg" alt="Concert OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="animations" role="listitem">
+          <img src="../photos/galerie/galerie-06.jpg" alt="Animation musicale OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/concerts/concert-04.jpg" alt="L'OHB sur scène" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/concerts/concert-08.jpg" alt="Concert OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="repetitions" role="listitem">
+          <img src="../photos/concerts/concert-06.jpg" alt="Musiciens répétition" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/concerts/concert-07.jpg" alt="OHB concert" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="animations" role="listitem">
+          <img src="../photos/galerie/galerie-08.jpg" alt="Animation OHB" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+        <div class="gallery-item" data-category="concerts" role="listitem">
+          <img src="../photos/galerie/galerie-09.jpg" alt="L'orchestre" loading="lazy" />
+          <div class="gallery-item__overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M11 8v6M8 11h6"/></svg></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse photo">
+    <button class="lightbox__close" id="lbClose" aria-label="Fermer">✕</button>
+    <button class="lightbox__prev" id="lbPrev" aria-label="Photo précédente">&#8592;</button>
+    <img class="lightbox__img" id="lbImg" src="" alt="Photo agrandie" />
+    <button class="lightbox__next" id="lbNext" aria-label="Photo suivante">&#8594;</button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="40" height="40" />
+            <span class="footer__logo-text">Orchestre d'Harmonie de Beinheim</span>
+          </div>
+          <p>Association musicale fondée en 2001, l'OHB rassemble des musiciens passionnés autour d'un répertoire varié.</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="mailto:contact@orchestrebeinheim.com" class="footer__social-link" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></a>
+          </div>
+        </div>
+        <div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="concerts.html">Concerts</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><h4>Liens utiles</h4><ul><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="a-propos.html#recrutement">Nous rejoindre</a></li></ul></div>
+        <div class="footer__address"><h4>Contact</h4><p>Orchestre d'Harmonie de Beinheim<br>Beinheim, Bas-Rhin (67)<br>Alsace, France<br><br><a href="mailto:contact@orchestrebeinheim.com">contact@orchestrebeinheim.com</a></p></div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 Orchestre d'Harmonie de Beinheim — Association loi 1901</p>
+        <p><a href="mentions-legales.html">Mentions légales</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Concerts de l'Orchestre d'Harmonie de Beinheim — événements passés et à venir." />
+  <title>Concerts — OHB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="50" height="50" />
+        <div class="nav__logo-text">OHB<span>Orchestre d'Harmonie de Beinheim</span></div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="concerts.html" class="active">Concerts</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+      </ul>
+      <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="concerts.html">Concerts</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul>
+  </div>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('../photos/hero/hero-concerts.jpg')"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__content">
+      <p class="label">Événements</p>
+      <h1>Concerts &amp; Manifestations</h1>
+    </div>
+  </header>
+
+  <!-- CONCERTS -->
+  <section class="section section--dark">
+    <div class="container">
+      <div class="concerts-tabs fade-up">
+        <button class="tab-btn active" data-tab="tab-upcoming">Prochains concerts</button>
+        <button class="tab-btn" data-tab="tab-past">Concerts passés</button>
+      </div>
+
+      <!-- PROCHAINS CONCERTS -->
+      <div class="tab-content active" id="tab-upcoming">
+
+        <article class="concert-full-card fade-up">
+          <div class="concert-full-card__img">
+            <img src="../photos/concerts/concert-02.jpg"
+                 alt="Concert de printemps 2025" loading="lazy" />
+          </div>
+          <div class="concert-full-card__body">
+            <span class="concert-badge concert-badge--future">À venir</span>
+            <p class="label">Printemps 2025</p>
+            <h3>Concert de Printemps</h3>
+            <p>Retrouvez l'Orchestre d'Harmonie de Beinheim pour son traditionnel concert de printemps. Au programme : un voyage musical à travers les plus grandes bandes originales de films, des classiques revisités et des découvertes contemporaines.</p>
+            <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Mai 2025</span>
+              <span>📍 Beinheim, Bas-Rhin</span>
+              <span>🎟️ Entrée libre</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="concert-full-card fade-up">
+          <div class="concert-full-card__img">
+            <img src="../photos/concerts/concert-03.jpg"
+                 alt="Concert de Noël 2025" loading="lazy" />
+          </div>
+          <div class="concert-full-card__body">
+            <span class="concert-badge concert-badge--future">À venir</span>
+            <p class="label">Hiver 2025</p>
+            <h3>Concert de Noël</h3>
+            <p>Pour les fêtes de fin d'année, l'OHB vous propose un programme festif et chaleureux. Un moment de partage et d'émotion musicale pour clôturer l'année en beauté avec toute la famille.</p>
+            <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Décembre 2025</span>
+              <span>📍 Beinheim, Bas-Rhin</span>
+              <span>🎟️ Entrée libre</span>
+            </div>
+          </div>
+        </article>
+
+        <div class="fade-up" style="background:var(--dark-2);border:1px solid var(--dark-3);border-radius:4px;padding:2rem;text-align:center;margin-top:1rem">
+          <p style="color:rgba(244,240,232,.6);margin-bottom:1rem">Les dates précises seront communiquées prochainement. Inscrivez-vous à notre liste de diffusion ou suivez-nous sur les réseaux sociaux pour ne rien manquer.</p>
+          <a href="contact.html" class="btn">Être informé des prochains concerts</a>
+        </div>
+      </div>
+
+      <!-- CONCERTS PASSÉS -->
+      <div class="tab-content" id="tab-past">
+
+        <article class="concert-full-card fade-up">
+          <div class="concert-full-card__img">
+            <img src="../photos/concerts/concert-05.jpg"
+                 alt="Concert 2023" loading="lazy" />
+          </div>
+          <div class="concert-full-card__body">
+            <span class="concert-badge concert-badge--past">Passé</span>
+            <p class="label">Décembre 2023</p>
+            <h3>Concert de Noël 2023</h3>
+            <p>Un programme festif et émouvant pour clôturer l'année 2023 avec brio. L'orchestre avait réuni plus de 200 spectateurs pour une soirée mémorable.</p>
+            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(244,240,232,.5)">
+              <span>📅 Décembre 2023 · 📍 Beinheim</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="concert-full-card fade-up">
+          <div class="concert-full-card__img">
+            <img src="https://static.wixstatic.com/media/7abdd3_b35ff88a2b38429daf96ecce031060e5~mv2.jpg/v1/fill/w_960,h_640,q_90,enc_avif,quality_auto/7abdd3_b35ff88a2b38429daf96ecce031060e5~mv2.jpg"
+                 alt="Concert printemps 2023" loading="lazy" />
+          </div>
+          <div class="concert-full-card__body">
+            <span class="concert-badge concert-badge--past">Passé</span>
+            <p class="label">Printemps 2023</p>
+            <h3>Concert de Printemps 2023</h3>
+            <p>Au programme : les musiques de <em>Star Wars</em>, <em>Le Roi Lion</em> et un medley des plus grands films de John Williams, acclamé par le public.</p>
+            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(244,240,232,.5)">
+              <span>📅 Mai 2023 · 📍 Beinheim</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="concert-full-card fade-up">
+          <div class="concert-full-card__img">
+            <img src="https://static.wixstatic.com/media/7abdd3_299104bb28e64ac697f83d2d34afa4ef~mv2.jpg/v1/fill/w_960,h_640,q_90,enc_avif,quality_auto/7abdd3_299104bb28e64ac697f83d2d34afa4ef~mv2.jpg"
+                 alt="Fête de l'école 2019" loading="lazy" />
+          </div>
+          <div class="concert-full-card__body">
+            <span class="concert-badge concert-badge--past">Passé</span>
+            <p class="label">Juin 2019</p>
+            <h3>Fête de l'École 2019</h3>
+            <p>L'OHB a animé la fête de l'école de Beinheim, proposant un programme léger et festif pour les petits et les grands, dans une ambiance conviviale.</p>
+            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(244,240,232,.5)">
+              <span>📅 Juin 2019 · 📍 Beinheim</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="concert-full-card fade-up">
+          <div class="concert-full-card__img">
+            <img src="https://static.wixstatic.com/media/7abdd3_fd07ff2543204a7384147ddd19e1b19a~mv2.jpeg/v1/fill/w_960,h_640,q_90,enc_avif,quality_auto/7abdd3_fd07ff2543204a7384147ddd19e1b19a~mv2.jpeg"
+                 alt="Concert passé" loading="lazy" />
+          </div>
+          <div class="concert-full-card__body">
+            <span class="concert-badge concert-badge--past">Passé</span>
+            <p class="label">Hiver 2022</p>
+            <h3>Concert de Noël 2022</h3>
+            <p>Une soirée chaleureuse autour des musiques de Noël revisitées et d'un programme classique, en présence d'un public nombreux et enthousiaste.</p>
+            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(244,240,232,.5)">
+              <span>📅 Décembre 2022 · 📍 Beinheim</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="40" height="40" />
+            <span class="footer__logo-text">Orchestre d'Harmonie de Beinheim</span>
+          </div>
+          <p>Association musicale fondée en 2001, l'OHB rassemble des musiciens passionnés autour d'un répertoire varié.</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="mailto:contact@orchestrebeinheim.com" class="footer__social-link" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></a>
+          </div>
+        </div>
+        <div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="concerts.html">Concerts</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><h4>Liens utiles</h4><ul><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="a-propos.html#recrutement">Nous rejoindre</a></li><li><a href="a-propos.html#historique">Notre historique</a></li></ul></div>
+        <div class="footer__address"><h4>Contact</h4><p>Orchestre d'Harmonie de Beinheim<br>Beinheim, Bas-Rhin (67)<br>Alsace, France<br><br><a href="mailto:contact@orchestrebeinheim.com">contact@orchestrebeinheim.com</a></p></div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 Orchestre d'Harmonie de Beinheim — Association loi 1901</p>
+        <p><a href="mentions-legales.html">Mentions légales</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
