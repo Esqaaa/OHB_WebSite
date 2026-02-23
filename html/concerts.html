@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+
 </head>
 <body>
 
+  <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
@@ -50,21 +52,31 @@
     </div>
   </header>
 
-  <!-- CONCERTS -->
+  <!-- CONTENU -->
   <section class="section section--dark">
     <div class="container">
+
+      <!-- ONGLETS -->
       <div class="concerts-tabs fade-up">
+        
         <button class="tab-btn active" data-tab="tab-upcoming">Prochains concerts</button>
+        
         <button class="tab-btn" data-tab="tab-past">Concerts passés</button>
+        
+        <button class="tab-btn" data-tab="tab-excerpts" style="display:inline-flex;align-items:center;gap:6px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="opacity:.85">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          Extraits vidéo
+        </button>
       </div>
 
-      <!-- PROCHAINS CONCERTS -->
+      <!-- ════ PROCHAINS CONCERTS ════ -->
       <div class="tab-content active" id="tab-upcoming">
 
         <article class="concert-full-card fade-up">
           <div class="concert-full-card__img">
-            <img src="../photos/concerts/concert-02.jpg"
-                 alt="Concert de printemps 2025" loading="lazy" />
+            <img src="../photos/concerts/concert-02.jpg" alt="Concert de printemps 2025" loading="lazy" />
           </div>
           <div class="concert-full-card__body">
             <span class="concert-badge concert-badge--future">À venir</span>
@@ -81,8 +93,7 @@
 
         <article class="concert-full-card fade-up">
           <div class="concert-full-card__img">
-            <img src="../photos/concerts/concert-03.jpg"
-                 alt="Concert de Noël 2025" loading="lazy" />
+            <img src="../photos/concerts/concert-03.jpg" alt="Concert de Noël 2025" loading="lazy" />
           </div>
           <div class="concert-full-card__body">
             <span class="concert-badge concert-badge--future">À venir</span>
@@ -98,18 +109,18 @@
         </article>
 
         <div class="fade-up" style="background:var(--dark-2);border:1px solid var(--dark-3);border-radius:4px;padding:2rem;text-align:center;margin-top:1rem">
-          <p style="color:rgba(244,240,232,.6);margin-bottom:1rem">Les dates précises seront communiquées prochainement. Inscrivez-vous à notre liste de diffusion ou suivez-nous sur les réseaux sociaux pour ne rien manquer.</p>
+          <p style="color:rgba(244,240,232,.6);margin-bottom:1rem">Les dates précises seront communiquées prochainement. Suivez-nous sur les réseaux sociaux pour ne rien manquer.</p>
           <a href="contact.html" class="btn">Être informé des prochains concerts</a>
         </div>
+
       </div>
 
-      <!-- CONCERTS PASSÉS -->
+      <!-- ════ CONCERTS PASSÉS ════ -->
       <div class="tab-content" id="tab-past">
 
         <article class="concert-full-card fade-up">
           <div class="concert-full-card__img">
-            <img src="../photos/concerts/concert-05.jpg"
-                 alt="Concert 2023" loading="lazy" />
+            <img src="../photos/concerts/concert-05.jpg" alt="Concert de Noël 2023" loading="lazy" />
           </div>
           <div class="concert-full-card__body">
             <span class="concert-badge concert-badge--past">Passé</span>
@@ -124,8 +135,7 @@
 
         <article class="concert-full-card fade-up">
           <div class="concert-full-card__img">
-            <img src="https://static.wixstatic.com/media/7abdd3_b35ff88a2b38429daf96ecce031060e5~mv2.jpg/v1/fill/w_960,h_640,q_90,enc_avif,quality_auto/7abdd3_b35ff88a2b38429daf96ecce031060e5~mv2.jpg"
-                 alt="Concert printemps 2023" loading="lazy" />
+            <img src="../photos/concerts/concert-06.jpg" alt="Concert de Printemps 2023" loading="lazy" />
           </div>
           <div class="concert-full-card__body">
             <span class="concert-badge concert-badge--past">Passé</span>
@@ -140,8 +150,7 @@
 
         <article class="concert-full-card fade-up">
           <div class="concert-full-card__img">
-            <img src="https://static.wixstatic.com/media/7abdd3_299104bb28e64ac697f83d2d34afa4ef~mv2.jpg/v1/fill/w_960,h_640,q_90,enc_avif,quality_auto/7abdd3_299104bb28e64ac697f83d2d34afa4ef~mv2.jpg"
-                 alt="Fête de l'école 2019" loading="lazy" />
+            <img src="../photos/galerie/galerie-07.jpg" alt="Fête de l'école 2019" loading="lazy" />
           </div>
           <div class="concert-full-card__body">
             <span class="concert-badge concert-badge--past">Passé</span>
@@ -156,8 +165,7 @@
 
         <article class="concert-full-card fade-up">
           <div class="concert-full-card__img">
-            <img src="https://static.wixstatic.com/media/7abdd3_fd07ff2543204a7384147ddd19e1b19a~mv2.jpeg/v1/fill/w_960,h_640,q_90,enc_avif,quality_auto/7abdd3_fd07ff2543204a7384147ddd19e1b19a~mv2.jpeg"
-                 alt="Concert passé" loading="lazy" />
+            <img src="../photos/concerts/concert-07.jpg" alt="Concert de Noël 2022" loading="lazy" />
           </div>
           <div class="concert-full-card__body">
             <span class="concert-badge concert-badge--past">Passé</span>
@@ -171,6 +179,233 @@
         </article>
 
       </div>
+
+      <!-- ════ EXTRAITS VIDÉO ════ -->
+      <div class="tab-content" id="tab-excerpts">
+
+        <div class="fade-up" style="margin-bottom:2.5rem">
+          <p class="label" style="margin-bottom:.6rem">Extraits vidéo</p>
+          <h2 style="color:var(--white);font-size:clamp(1.4rem,3vw,2rem)">L'OHB en vidéo</h2>
+          <div class="divider"></div>
+          <p style="color:rgba(244,240,232,.6);max-width:560px">
+            Cliquez sur une vignette pour visionner la vidéo.
+          </p>
+        </div>
+
+        <div class="videos-grid">
+
+          <!-- Vidéo 1 — 6zmeQPj7JIs -->
+          <article class="video-card fade-up" data-video-id="6zmeQPj7JIs">
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
+                 aria-label="Lancer la vidéo 1"
+                 onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb"
+                   src="https://img.youtube.com/vi/6zmeQPj7JIs/maxresdefault.jpg"
+                   alt="Extrait OHB"
+                   onerror="this.src='https://img.youtube.com/vi/6zmeQPj7JIs/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-card__body">
+              <p class="label">Extrait</p>
+              <h3>Orchestre d'Harmonie de Beinheim</h3>
+              <p>Un extrait de l'OHB en concert.</p>
+              <div class="video-card__meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+                OHB
+              </div>
+            </div>
+          </article>
+
+          <!-- Vidéo 2 — rymS-HU8P0s -->
+          <article class="video-card fade-up" data-video-id="rymS-HU8P0s">
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
+                 aria-label="Lancer la vidéo 2"
+                 onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb"
+                   src="https://img.youtube.com/vi/rymS-HU8P0s/maxresdefault.jpg"
+                   alt="Extrait OHB"
+                   onerror="this.src='https://img.youtube.com/vi/rymS-HU8P0s/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-card__body">
+              <p class="label">Extrait</p>
+              <h3>Orchestre d'Harmonie de Beinheim</h3>
+              <p>Un extrait de l'OHB en concert.</p>
+              <div class="video-card__meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+                OHB
+              </div>
+            </div>
+          </article>
+
+          <!-- Vidéo 3 — WJFIKpeexF8 -->
+          <article class="video-card fade-up" data-video-id="WJFIKpeexF8">
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
+                 aria-label="Lancer la vidéo 3"
+                 onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb"
+                   src="https://img.youtube.com/vi/WJFIKpeexF8/maxresdefault.jpg"
+                   alt="Extrait OHB"
+                   onerror="this.src='https://img.youtube.com/vi/WJFIKpeexF8/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-card__body">
+              <p class="label">Extrait</p>
+              <h3>Orchestre d'Harmonie de Beinheim</h3>
+              <p>Un extrait de l'OHB en concert.</p>
+              <div class="video-card__meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+                OHB
+              </div>
+            </div>
+          </article>
+
+          <!-- Vidéo 4 — L--PVCgLvqM -->
+          <article class="video-card fade-up" data-video-id="L--PVCgLvqM">
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
+                 aria-label="Lancer la vidéo 4"
+                 onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb"
+                   src="https://img.youtube.com/vi/L--PVCgLvqM/maxresdefault.jpg"
+                   alt="Extrait OHB"
+                   onerror="this.src='https://img.youtube.com/vi/L--PVCgLvqM/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-card__body">
+              <p class="label">Extrait</p>
+              <h3>Orchestre d'Harmonie de Beinheim</h3>
+              <p>Un extrait de l'OHB en concert.</p>
+              <div class="video-card__meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+                OHB
+              </div>
+            </div>
+          </article>
+
+          <!-- Vidéo 5 — i6H9CccBbjQ -->
+          <article class="video-card fade-up" data-video-id="i6H9CccBbjQ">
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
+                 aria-label="Lancer la vidéo 5"
+                 onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb"
+                   src="https://img.youtube.com/vi/i6H9CccBbjQ/maxresdefault.jpg"
+                   alt="Extrait OHB"
+                   onerror="this.src='https://img.youtube.com/vi/i6H9CccBbjQ/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-card__body">
+              <p class="label">Extrait</p>
+              <h3>Orchestre d'Harmonie de Beinheim</h3>
+              <p>Un extrait de l'OHB en concert.</p>
+              <div class="video-card__meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+                OHB
+              </div>
+            </div>
+          </article>
+
+          <!-- Vidéo 6 — TzHih1DIKLc -->
+          <article class="video-card fade-up" data-video-id="TzHih1DIKLc">
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
+                 aria-label="Lancer la vidéo 6"
+                 onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb"
+                   src="https://img.youtube.com/vi/TzHih1DIKLc/maxresdefault.jpg"
+                   alt="Extrait OHB"
+                   onerror="this.src='https://img.youtube.com/vi/TzHih1DIKLc/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-card__body">
+              <p class="label">Extrait</p>
+              <h3>Orchestre d'Harmonie de Beinheim</h3>
+              <p>Un extrait de l'OHB en concert.</p>
+              <div class="video-card__meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+                OHB
+              </div>
+            </div>
+          </article>
+
+          <!-- Vidéo 7 — _jD044BEY4g -->
+          <article class="video-card fade-up" data-video-id="_jD044BEY4g">
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
+                 aria-label="Lancer la vidéo 7"
+                 onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb"
+                   src="https://img.youtube.com/vi/_jD044BEY4g/maxresdefault.jpg"
+                   alt="Extrait OHB"
+                   onerror="this.src='https://img.youtube.com/vi/_jD044BEY4g/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-card__body">
+              <p class="label">Extrait</p>
+              <h3>Orchestre d'Harmonie de Beinheim</h3>
+              <p>Un extrait de l'OHB en concert.</p>
+              <div class="video-card__meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+                OHB
+              </div>
+            </div>
+          </article>
+
+          <!-- Vidéo 8 — vqZvVoev4W8 -->
+          <article class="video-card fade-up" data-video-id="vqZvVoev4W8">
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
+                 aria-label="Lancer la vidéo 8"
+                 onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb"
+                   src="https://img.youtube.com/vi/vqZvVoev4W8/maxresdefault.jpg"
+                   alt="Extrait OHB"
+                   onerror="this.src='https://img.youtube.com/vi/vqZvVoev4W8/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+            <div class="video-card__body">
+              <p class="label">Extrait</p>
+              <h3>Orchestre d'Harmonie de Beinheim</h3>
+              <p>Un extrait de l'OHB en concert.</p>
+              <div class="video-card__meta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
+                OHB
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /.videos-grid -->
+
+        <!-- Lien chaîne YouTube -->
+        <div class="fade-up" style="text-align:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--dark-3)">
+          <p style="color:rgba(244,240,232,.45);font-size:.88rem;margin-bottom:1.2rem">
+            Retrouvez tous nos enregistrements sur notre chaîne YouTube
+          </p>
+          <a href="https://www.youtube.com/@orchestredharmoniedebeinhe8247"
+             target="_blank" rel="noopener noreferrer"
+             class="btn"
+             style="display:inline-flex;align-items:center;gap:.7rem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.47A3.01 3.01 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.01 3.01 0 002.12 2.13C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.47a3.01 3.01 0 002.12-2.13A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/>
+            </svg>
+            Voir la chaîne YouTube
+          </a>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -185,22 +420,52 @@
           </div>
           <p>Association musicale fondée en 2001, l'OHB rassemble des musiciens passionnés autour d'un répertoire varié.</p>
           <div class="footer__socials">
-            <a href="https://www.facebook.com/OHBeinheim" class="footer__social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-            <a href="https://www.instagram.com/ohbeinheim" class="footer__social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3h-8.5zm10.71-.21a1.21 1.21 0 11-2.42-.01c0 .67-.6999999999999998 .6333333333333333-1 .6-.6-.6-6-6-6-6s-.6-.6-.6-.6c-.3-.3-.8-.8-1-1a4 .4 .4 .4 .4 .4 .4z"/></svg></a>
-            <a href="mailto:ohbeinheim@gmail.com" class="footer__social-link" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></a>
+            <a href="https://www.facebook.com/OHBeinheim" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/ohbeinheim" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@OHBeinheim" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.47A3.01 3.01 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.01 3.01 0 002.12 2.13C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.47a3.01 3.01 0 002.12-2.13A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
+            </a>
+            <a href="mailto:ohbeinheim@gmail.com" class="footer__social-link" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+            </a>
           </div>
         </div>
-        <div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="concerts.html">Concerts</a></li><li><a href="galerie.html">Galerie</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div><h4>Liens utiles</h4><ul><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="a-propos.html#recrutement">Nous rejoindre</a></li><li><a href="a-propos.html#historique">Notre historique</a></li></ul></div>
-        <div class="footer__address"><h4>Contact</h4><p>Orchestre d'Harmonie de Beinheim<br>Beinheim, Bas-Rhin (67)<br>Alsace, France<br><br><a href="mailto:ohbeinheim@gmail.com">ohbeinheim@gmail.com</a></p></div>
+        <div>
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="concerts.html">Concerts</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liens utiles</h4>
+          <ul>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="a-propos.html#recrutement">Nous rejoindre</a></li>
+            <li><a href="a-propos.html#historique">Notre historique</a></li>
+          </ul>
+        </div>
+        <div class="footer__address">
+          <h4>Contact</h4>
+          <p>Orchestre d'Harmonie de Beinheim<br>Beinheim, Bas-Rhin (67)<br>Alsace, France<br><br>
+          <a href="mailto:ohbeinheim@gmail.com">ohbeinheim@gmail.com</a></p>
+        </div>
       </div>
       <div class="footer__bottom">
-        <p>&copy; 2024 Orchestre d'Harmonie de Beinheim — Association loi 1901</p>
+        <p>&copy; 2026 Orchestre d'Harmonie de Beinheim — Association loi 1901</p>
         <p><a href="mentions-legales.html">Mentions légales</a></p>
       </div>
     </div>
   </footer>
 
   <script src="../js/main.js" defer></script>
+
 </body>
 </html>

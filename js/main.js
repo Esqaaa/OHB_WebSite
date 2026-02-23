@@ -1,25 +1,21 @@
-/* ============================================================
-   ORCHESTRE D'HARMONIE DE BEINHEIM — main.js
-   ============================================================ */
 
-/* ─── 1. NAVIGATION ─────────────────────────────────────────── */
 const nav     = document.getElementById('nav');
 const burger  = document.getElementById('navBurger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-// Scroll → add .scrolled class
+
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
-// Burger toggle
+
 burger?.addEventListener('click', () => {
   burger.classList.toggle('open');
   mobileMenu.classList.toggle('open');
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 });
 
-// Close mobile menu on link click
+
 document.querySelectorAll('#mobileMenu a').forEach(link => {
   link.addEventListener('click', () => {
     burger.classList.remove('open');
@@ -28,13 +24,13 @@ document.querySelectorAll('#mobileMenu a').forEach(link => {
   });
 });
 
-// Active nav link
+
 const currentPage = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav__links a, #mobileMenu a').forEach(a => {
   if (a.getAttribute('href') === currentPage) a.classList.add('active');
 });
 
-/* ─── 2. SCROLL ANIMATIONS ───────────────────────────────────── */
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -46,7 +42,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up, .timeline-item').forEach(el => observer.observe(el));
 
-/* ─── 3. LIGHTBOX ────────────────────────────────────────────── */
+
 const lightbox   = document.getElementById('lightbox');
 const lbImg      = document.getElementById('lbImg');
 const lbClose    = document.getElementById('lbClose');
@@ -104,7 +100,7 @@ galleryItems.forEach((item, idx) => {
   item.addEventListener('keydown', e => { if (e.key === 'Enter') item.click(); });
 });
 
-/* ─── 4. COUNTER ANIMATION ───────────────────────────────────── */
+
 function animateCounter(el) {
   const target = +el.dataset.target;
   const duration = 1800;
@@ -131,7 +127,7 @@ if (counters.length) {
   counters.forEach(c => counterObs.observe(c));
 }
 
-/* ─── 5. TABS (concerts page) ────────────────────────────────── */
+
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -141,7 +137,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-/* ─── 6. CONTACT FORM ────────────────────────────────────────── */
+
 const contactForm = document.getElementById('contactForm');
 contactForm?.addEventListener('submit', e => {
   e.preventDefault();
@@ -177,7 +173,7 @@ contactForm?.querySelectorAll('input, textarea').forEach(el => {
   el.addEventListener('input', () => el.closest('.form-group')?.classList.remove('has-error'));
 });
 
-/* ─── 7. GALLERY FILTER ──────────────────────────────────────── */
+
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -194,9 +190,27 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-/* ─── 8. STAGGER CHILDREN FADE ───────────────────────────────── */
+
 document.querySelectorAll('.stagger-children > *').forEach((child, i) => {
   child.style.animationDelay = `${i * 0.1}s`;
   child.classList.add('fade-up');
   observer.observe(child);
 });
+
+
+function loadVideo(wrapper) {
+      const card    = wrapper.closest('[data-video-id]');
+      const videoId = card?.dataset?.videoId;
+      if (!videoId) return;
+
+      const iframe           = document.createElement('iframe');
+      iframe.src             = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.allow           = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.title           = card.querySelector('h3')?.textContent || 'Vidéo OHB';
+
+      wrapper.innerHTML      = '';
+      wrapper.appendChild(iframe);
+      wrapper.style.cursor   = 'default';
+      wrapper.onclick        = null;
+}
