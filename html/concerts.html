@@ -4,12 +4,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Concerts de l'Orchestre d'Harmonie de Beinheim — événements passés et à venir." />
+
+  <!-- ✅ FIX ERREUR 153 : envoie le referrer à YouTube (requis depuis fin 2025) -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <title>Concerts — OHB</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ─── Grille vidéos ─────────────────────────────────── */
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
 
+    .video-card {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-3);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .video-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,.25);
+      box-shadow: var(--shadow-gold);
+    }
+
+    /* Wrapper 16:9 */
+    .video-card__embed {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .video-card__thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease, opacity .3s ease;
+    }
+    .video-card__embed:hover .video-card__thumb {
+      transform: scale(1.04);
+      opacity: .7;
+    }
+
+    /* Bouton play */
+    .video-card__play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 62px;
+      height: 62px;
+      background: rgba(255,255,255,.92);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: background var(--transition), transform var(--transition);
+      box-shadow: 0 4px 24px rgba(0,0,0,.6);
+    }
+    .video-card__embed:hover .video-card__play {
+      background: rgba(255,255,255,1);
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+    .video-card__play svg { margin-left: 4px; }
+
+    /* Iframe injectée au clic */
+    .video-card__embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-card__body { padding: 1.2rem 1.4rem 1.4rem; }
+    .video-card__body .label { margin-bottom: .4rem; }
+    .video-card__body h3 {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: .4rem;
+      line-height: 1.35;
+    }
+    .video-card__body p {
+      font-size: .85rem;
+      color: rgba(255,255,255,.58);
+      line-height: 1.6;
+    }
+    .video-card__meta {
+      margin-top: .8rem;
+      font-size: .76rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: .06em;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    @media (max-width: 640px) {
+      .videos-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -58,14 +165,11 @@
 
       <!-- ONGLETS -->
       <div class="concerts-tabs fade-up">
-        
         <button class="tab-btn active" data-tab="tab-upcoming">Prochains concerts</button>
-        
         <button class="tab-btn" data-tab="tab-past">Concerts passés</button>
-        
         <button class="tab-btn" data-tab="tab-excerpts" style="display:inline-flex;align-items:center;gap:6px">
           <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="opacity:.85">
-            <path d="M8 5v14l11-7z"/>
+            <path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.47A3.01 3.01 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.01 3.01 0 002.12 2.13C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.47a3.01 3.01 0 002.12-2.13A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/>
           </svg>
           Extraits vidéo
         </button>
@@ -79,21 +183,37 @@
             <img src="../photos/concerts/concert-02.jpg" alt="Concert de printemps 2025" loading="lazy" />
           </div>
           <div class="concert-full-card__body">
-            <span class="concert-badge concert-badge--future">Prochainement...</span>
-            <p class="label"> Été 2026</p>
-            <h3>Concert des 25 ans de l'OHB</h3>
-            <p>Retrouvez l'Orchestre d'Harmonie de Beinheim pour fêter ses 25 ans avec un programme exceptionnel et des moments inoubliables.</p>
+            <span class="concert-badge concert-badge--future">À venir</span>
+            <p class="label">Printemps 2025</p>
+            <h3>Concert de Printemps</h3>
+            <p>Retrouvez l'Orchestre d'Harmonie de Beinheim pour son traditionnel concert de printemps. Au programme : un voyage musical à travers les plus grandes bandes originales de films, des classiques revisités et des découvertes contemporaines.</p>
             <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
-              <span>📅 Juin 2026</span>
+              <span>📅 Mai 2025</span>
               <span>📍 Beinheim, Bas-Rhin</span>
               <span>🎟️ Entrée libre</span>
             </div>
           </div>
         </article>
 
+        <article class="concert-full-card fade-up">
+          <div class="concert-full-card__img">
+            <img src="../photos/concerts/concert-03.jpg" alt="Concert de Noël 2025" loading="lazy" />
+          </div>
+          <div class="concert-full-card__body">
+            <span class="concert-badge concert-badge--future">À venir</span>
+            <p class="label">Hiver 2025</p>
+            <h3>Concert de Noël</h3>
+            <p>Pour les fêtes de fin d'année, l'OHB vous propose un programme festif et chaleureux. Un moment de partage et d'émotion musicale pour clôturer l'année en beauté avec toute la famille.</p>
+            <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Décembre 2025</span>
+              <span>📍 Beinheim, Bas-Rhin</span>
+              <span>🎟️ Entrée libre</span>
+            </div>
+          </div>
+        </article>
 
         <div class="fade-up" style="background:var(--dark-2);border:1px solid var(--dark-3);border-radius:4px;padding:2rem;text-align:center;margin-top:1rem">
-          <p style="color:rgba(244,240,232,.6);margin-bottom:1rem">Les dates précises seront communiquées prochainement. Suivez-nous sur les réseaux sociaux pour ne rien manquer.</p>
+          <p style="color:rgba(255,255,255,.6);margin-bottom:1rem">Les dates précises seront communiquées prochainement. Suivez-nous sur les réseaux sociaux pour ne rien manquer.</p>
           <a href="contact.html" class="btn">Être informé des prochains concerts</a>
         </div>
 
@@ -111,7 +231,7 @@
             <p class="label">Décembre 2023</p>
             <h3>Concert de Noël 2023</h3>
             <p>Un programme festif et émouvant pour clôturer l'année 2023 avec brio. L'orchestre avait réuni plus de 200 spectateurs pour une soirée mémorable.</p>
-            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(244,240,232,.5)">
+            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.5)">
               <span>📅 Décembre 2023 · 📍 Beinheim</span>
             </div>
           </div>
@@ -126,7 +246,7 @@
             <p class="label">Printemps 2023</p>
             <h3>Concert de Printemps 2023</h3>
             <p>Au programme : les musiques de <em>Star Wars</em>, <em>Le Roi Lion</em> et un medley des plus grands films de John Williams, acclamé par le public.</p>
-            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(244,240,232,.5)">
+            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.5)">
               <span>📅 Mai 2023 · 📍 Beinheim</span>
             </div>
           </div>
@@ -141,7 +261,7 @@
             <p class="label">Juin 2019</p>
             <h3>Fête de l'École 2019</h3>
             <p>L'OHB a animé la fête de l'école de Beinheim, proposant un programme léger et festif pour les petits et les grands, dans une ambiance conviviale.</p>
-            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(244,240,232,.5)">
+            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.5)">
               <span>📅 Juin 2019 · 📍 Beinheim</span>
             </div>
           </div>
@@ -156,7 +276,7 @@
             <p class="label">Hiver 2022</p>
             <h3>Concert de Noël 2022</h3>
             <p>Une soirée chaleureuse autour des musiques de Noël revisitées et d'un programme classique, en présence d'un public nombreux et enthousiaste.</p>
-            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(244,240,232,.5)">
+            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.5)">
               <span>📅 Décembre 2022 · 📍 Beinheim</span>
             </div>
           </div>
@@ -171,202 +291,114 @@
           <p class="label" style="margin-bottom:.6rem">Extraits vidéo</p>
           <h2 style="color:var(--white);font-size:clamp(1.4rem,3vw,2rem)">L'OHB en vidéo</h2>
           <div class="divider"></div>
-          <p style="color:rgba(244,240,232,.6);max-width:560px">
-            Cliquez sur une vignette pour visionner la vidéo.
+          <p style="color:rgba(255,255,255,.6);max-width:560px">
+            Cliquez sur une vignette pour lancer la vidéo.
           </p>
         </div>
 
         <div class="videos-grid">
 
-          <!-- Vidéo 1 — 6zmeQPj7JIs -->
+          <!-- Vidéo 1 -->
           <article class="video-card fade-up" data-video-id="6zmeQPj7JIs">
-            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
-                 aria-label="Lancer la vidéo 1"
-                 onkeydown="if(event.key==='Enter')loadVideo(this)">
-              <img class="video-card__thumb"
-                   src="https://img.youtube.com/vi/6zmeQPj7JIs/maxresdefault.jpg"
-                   alt="Extrait OHB"
-                   onerror="this.src='https://img.youtube.com/vi/6zmeQPj7JIs/hqdefault.jpg'" />
-              <div class="video-card__play" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb" src="https://img.youtube.com/vi/6zmeQPj7JIs/maxresdefault.jpg" alt="Extrait OHB" onerror="this.src='https://img.youtube.com/vi/6zmeQPj7JIs/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             <div class="video-card__body">
               <p class="label">Extrait</p>
               <h3>Orchestre d'Harmonie de Beinheim</h3>
-              <p>Un extrait de l'OHB en concert.</p>
-              <div class="video-card__meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
-                OHB
-              </div>
+              <div class="video-card__meta"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>OHB</div>
             </div>
           </article>
 
-          <!-- Vidéo 2 — rymS-HU8P0s -->
+          <!-- Vidéo 2 -->
           <article class="video-card fade-up" data-video-id="rymS-HU8P0s">
-            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
-                 aria-label="Lancer la vidéo 2"
-                 onkeydown="if(event.key==='Enter')loadVideo(this)">
-              <img class="video-card__thumb"
-                   src="https://img.youtube.com/vi/rymS-HU8P0s/maxresdefault.jpg"
-                   alt="Extrait OHB"
-                   onerror="this.src='https://img.youtube.com/vi/rymS-HU8P0s/hqdefault.jpg'" />
-              <div class="video-card__play" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb" src="https://img.youtube.com/vi/rymS-HU8P0s/maxresdefault.jpg" alt="Extrait OHB" onerror="this.src='https://img.youtube.com/vi/rymS-HU8P0s/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             <div class="video-card__body">
               <p class="label">Extrait</p>
               <h3>Orchestre d'Harmonie de Beinheim</h3>
-              <p>Un extrait de l'OHB en concert.</p>
-              <div class="video-card__meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
-                OHB
-              </div>
+              <div class="video-card__meta"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>OHB</div>
             </div>
           </article>
 
-          <!-- Vidéo 3 — WJFIKpeexF8 -->
+          <!-- Vidéo 3 -->
           <article class="video-card fade-up" data-video-id="WJFIKpeexF8">
-            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
-                 aria-label="Lancer la vidéo 3"
-                 onkeydown="if(event.key==='Enter')loadVideo(this)">
-              <img class="video-card__thumb"
-                   src="https://img.youtube.com/vi/WJFIKpeexF8/maxresdefault.jpg"
-                   alt="Extrait OHB"
-                   onerror="this.src='https://img.youtube.com/vi/WJFIKpeexF8/hqdefault.jpg'" />
-              <div class="video-card__play" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb" src="https://img.youtube.com/vi/WJFIKpeexF8/maxresdefault.jpg" alt="Extrait OHB" onerror="this.src='https://img.youtube.com/vi/WJFIKpeexF8/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             <div class="video-card__body">
               <p class="label">Extrait</p>
               <h3>Orchestre d'Harmonie de Beinheim</h3>
-              <p>Un extrait de l'OHB en concert.</p>
-              <div class="video-card__meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
-                OHB
-              </div>
+              <div class="video-card__meta"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>OHB</div>
             </div>
           </article>
 
-          <!-- Vidéo 4 — L--PVCgLvqM -->
+          <!-- Vidéo 4 -->
           <article class="video-card fade-up" data-video-id="L--PVCgLvqM">
-            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
-                 aria-label="Lancer la vidéo 4"
-                 onkeydown="if(event.key==='Enter')loadVideo(this)">
-              <img class="video-card__thumb"
-                   src="https://img.youtube.com/vi/L--PVCgLvqM/maxresdefault.jpg"
-                   alt="Extrait OHB"
-                   onerror="this.src='https://img.youtube.com/vi/L--PVCgLvqM/hqdefault.jpg'" />
-              <div class="video-card__play" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb" src="https://img.youtube.com/vi/L--PVCgLvqM/maxresdefault.jpg" alt="Extrait OHB" onerror="this.src='https://img.youtube.com/vi/L--PVCgLvqM/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             <div class="video-card__body">
               <p class="label">Extrait</p>
               <h3>Orchestre d'Harmonie de Beinheim</h3>
-              <p>Un extrait de l'OHB en concert.</p>
-              <div class="video-card__meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
-                OHB
-              </div>
+              <div class="video-card__meta"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>OHB</div>
             </div>
           </article>
 
-          <!-- Vidéo 5 — i6H9CccBbjQ -->
+          <!-- Vidéo 5 -->
           <article class="video-card fade-up" data-video-id="i6H9CccBbjQ">
-            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
-                 aria-label="Lancer la vidéo 5"
-                 onkeydown="if(event.key==='Enter')loadVideo(this)">
-              <img class="video-card__thumb"
-                   src="https://img.youtube.com/vi/i6H9CccBbjQ/maxresdefault.jpg"
-                   alt="Extrait OHB"
-                   onerror="this.src='https://img.youtube.com/vi/i6H9CccBbjQ/hqdefault.jpg'" />
-              <div class="video-card__play" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb" src="https://img.youtube.com/vi/i6H9CccBbjQ/maxresdefault.jpg" alt="Extrait OHB" onerror="this.src='https://img.youtube.com/vi/i6H9CccBbjQ/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             <div class="video-card__body">
               <p class="label">Extrait</p>
               <h3>Orchestre d'Harmonie de Beinheim</h3>
-              <p>Un extrait de l'OHB en concert.</p>
-              <div class="video-card__meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
-                OHB
-              </div>
+              <div class="video-card__meta"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>OHB</div>
             </div>
           </article>
 
-          <!-- Vidéo 6 — TzHih1DIKLc -->
+          <!-- Vidéo 6 -->
           <article class="video-card fade-up" data-video-id="TzHih1DIKLc">
-            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
-                 aria-label="Lancer la vidéo 6"
-                 onkeydown="if(event.key==='Enter')loadVideo(this)">
-              <img class="video-card__thumb"
-                   src="https://img.youtube.com/vi/TzHih1DIKLc/maxresdefault.jpg"
-                   alt="Extrait OHB"
-                   onerror="this.src='https://img.youtube.com/vi/TzHih1DIKLc/hqdefault.jpg'" />
-              <div class="video-card__play" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb" src="https://img.youtube.com/vi/TzHih1DIKLc/maxresdefault.jpg" alt="Extrait OHB" onerror="this.src='https://img.youtube.com/vi/TzHih1DIKLc/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             <div class="video-card__body">
               <p class="label">Extrait</p>
               <h3>Orchestre d'Harmonie de Beinheim</h3>
-              <p>Un extrait de l'OHB en concert.</p>
-              <div class="video-card__meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
-                OHB
-              </div>
+              <div class="video-card__meta"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>OHB</div>
             </div>
           </article>
 
-          <!-- Vidéo 7 — _jD044BEY4g -->
+          <!-- Vidéo 7 -->
           <article class="video-card fade-up" data-video-id="_jD044BEY4g">
-            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
-                 aria-label="Lancer la vidéo 7"
-                 onkeydown="if(event.key==='Enter')loadVideo(this)">
-              <img class="video-card__thumb"
-                   src="https://img.youtube.com/vi/_jD044BEY4g/maxresdefault.jpg"
-                   alt="Extrait OHB"
-                   onerror="this.src='https://img.youtube.com/vi/_jD044BEY4g/hqdefault.jpg'" />
-              <div class="video-card__play" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb" src="https://img.youtube.com/vi/_jD044BEY4g/maxresdefault.jpg" alt="Extrait OHB" onerror="this.src='https://img.youtube.com/vi/_jD044BEY4g/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             <div class="video-card__body">
               <p class="label">Extrait</p>
               <h3>Orchestre d'Harmonie de Beinheim</h3>
-              <p>Un extrait de l'OHB en concert.</p>
-              <div class="video-card__meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
-                OHB
-              </div>
+              <div class="video-card__meta"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>OHB</div>
             </div>
           </article>
 
-          <!-- Vidéo 8 — vqZvVoev4W8 -->
+          <!-- Vidéo 8 -->
           <article class="video-card fade-up" data-video-id="vqZvVoev4W8">
-            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0"
-                 aria-label="Lancer la vidéo 8"
-                 onkeydown="if(event.key==='Enter')loadVideo(this)">
-              <img class="video-card__thumb"
-                   src="https://img.youtube.com/vi/vqZvVoev4W8/maxresdefault.jpg"
-                   alt="Extrait OHB"
-                   onerror="this.src='https://img.youtube.com/vi/vqZvVoev4W8/hqdefault.jpg'" />
-              <div class="video-card__play" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+            <div class="video-card__embed" onclick="loadVideo(this)" role="button" tabindex="0" onkeydown="if(event.key==='Enter')loadVideo(this)">
+              <img class="video-card__thumb" src="https://img.youtube.com/vi/vqZvVoev4W8/maxresdefault.jpg" alt="Extrait OHB" onerror="this.src='https://img.youtube.com/vi/vqZvVoev4W8/hqdefault.jpg'" />
+              <div class="video-card__play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="var(--noir)"><path d="M8 5v14l11-7z"/></svg></div>
             </div>
             <div class="video-card__body">
               <p class="label">Extrait</p>
               <h3>Orchestre d'Harmonie de Beinheim</h3>
-              <p>Un extrait de l'OHB en concert.</p>
-              <div class="video-card__meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>
-                OHB
-              </div>
+              <div class="video-card__meta"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 3"/></svg>OHB</div>
             </div>
           </article>
 
@@ -374,13 +406,10 @@
 
         <!-- Lien chaîne YouTube -->
         <div class="fade-up" style="text-align:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--dark-3)">
-          <p style="color:rgba(244,240,232,.45);font-size:.88rem;margin-bottom:1.2rem">
+          <p style="color:rgba(255,255,255,.45);font-size:.88rem;margin-bottom:1.2rem">
             Retrouvez tous nos enregistrements sur notre chaîne YouTube
           </p>
-          <a href="https://www.youtube.com/@orchestredharmoniedebeinhe8247"
-             target="_blank" rel="noopener noreferrer"
-             class="btn"
-             style="display:inline-flex;align-items:center;gap:.7rem">
+          <a href="https://www.youtube.com/@OHBeinheim" target="_blank" rel="noopener noreferrer" class="btn" style="display:inline-flex;align-items:center;gap:.7rem">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.47A3.01 3.01 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.01 3.01 0 002.12 2.13C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.47a3.01 3.01 0 002.12-2.13A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/>
             </svg>
@@ -388,9 +417,9 @@
           </a>
         </div>
 
-      </div>
+      </div><!-- /#tab-excerpts -->
 
-    </div>
+    </div><!-- /.container -->
   </section>
 
   <!-- FOOTER -->
@@ -413,7 +442,7 @@
             <a href="https://www.youtube.com/@OHBeinheim" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.47A3.01 3.01 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.01 3.01 0 002.12 2.13C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.47a3.01 3.01 0 002.12-2.13A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
             </a>
-            <a href="mailto:ohbeinheim@gmail.com" class="footer__social-link" aria-label="Email">
+            <a href="/cdn-cgi/l/email-protection#bed1d6dcdbd7d0d6dbd7d3fed9d3dfd7d290ddd1d3" class="footer__social-link" aria-label="Email">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
             </a>
           </div>
@@ -439,7 +468,7 @@
         <div class="footer__address">
           <h4>Contact</h4>
           <p>Orchestre d'Harmonie de Beinheim<br>Beinheim, Bas-Rhin (67)<br>Alsace, France<br><br>
-          <a href="mailto:ohbeinheim@gmail.com">ohbeinheim@gmail.com</a></p>
+          <a href="/cdn-cgi/l/email-protection#355a5d57505c5b5d505c58755258545c591b565a58"><span class="__cf_email__" data-cfemail="7c13141e191512141915113c1b111d1510521f1311">[email&#160;protected]</span></a></p>
         </div>
       </div>
       <div class="footer__bottom">
@@ -449,7 +478,27 @@
     </div>
   </footer>
 
-  <script src="../js/main.js" defer></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../js/main.js" defer></script>
+  <script>
+    /**
+     * loadVideo() — Lazy-load YouTube avec referrerpolicy obligatoire (fix erreur 153).
+     * YouTube exige depuis fin 2025 un referrer valide pour les embeds.
+     * On utilise youtube-nocookie.com + referrerpolicy="strict-origin-when-cross-origin".
+     *
+     * ⚠️ IMPORTANT : ce fix fonctionne sur un serveur web (Netlify, GitHub Pages…).
+     * En local (file://), l'erreur 153 peut persister car le navigateur
+     * ne peut pas envoyer de referrer depuis un fichier local.
+     * → Testez toujours depuis un serveur (ex: "Live Server" dans VS Code).
+     */
+    function loadVideo(wrapper) {
+      const card    = wrapper.closest('[data-video-id]');
+      const videoId = card?.dataset?.videoId;
+      if (!videoId) return;
 
-</body>
-</html>
+      const iframe               = document.createElement('iframe');
+      iframe.src                 = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.allow               = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen     = true;
+      iframe.title               = card.querySelector('h3')?.textContent || 'Vidéo OHB';
+      // ✅ FIX erreur 153 : envoie le referrer
+    }
