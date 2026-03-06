@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Les bénévoles de l'Orchestre d'Harmonie de Beinheim — merci à celles et ceux qui font vivre l'association." />
+  <title>Bénévoles — OHB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .benevoles-intro {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+    .benevoles-intro blockquote {
+      font-family: var(--ff-display);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.6;
+      margin: 1.5rem 0;
+      padding: 1.5rem 2rem;
+      border-left: 3px solid var(--gold);
+      background: var(--dark-2);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      text-align: left;
+    }
+
+    .benevoles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .benevole-card {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-3);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-align: center;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .benevole-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,.25);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .benevole-card__photo {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      background: var(--dark-3);
+    }
+    .benevole-card__photo--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 220px;
+      background: var(--dark-3);
+    }
+    .benevole-card__photo--placeholder svg {
+      opacity: .25;
+    }
+
+    .benevole-card__body {
+      padding: 1.4rem 1.6rem 1.8rem;
+    }
+    .benevole-card__name {
+      font-family: var(--ff-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .3rem;
+    }
+    .benevole-card__role {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .9rem;
+    }
+    .benevole-card__text {
+      font-size: .88rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+    }
+
+    .merci-section {
+      text-align: center;
+      padding: 4rem 0 0;
+      border-top: 1px solid var(--dark-3);
+      margin-top: 4rem;
+    }
+    .merci-section p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: rgba(255,255,255,.55);
+      font-size: .95rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 480px) {
+      .benevoles-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="50" height="50" />
+        <div class="nav__logo-text">OHB<span>Orchestre d'Harmonie de Beinheim</span></div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="concerts.html">Concerts</a></li>
+        <li><a href="oae-oj.html">OAE / OJ</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="benevoles.html" class="active">Bénévoles</a></li>
+        <li><a href="partenaires.html">Partenaires</a></li>
+        <li><a href="dossier-presse.html">Dossier de presse</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="concerts.html">Concerts</a></li>
+      <li><a href="oae-oj.html">OAE / OJ</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="benevoles.html">Bénévoles</a></li>
+      <li><a href="partenaires.html">Partenaires</a></li>
+      <li><a href="dossier-presse.html">Dossier de presse</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul>
+  </div>
+
+  <header class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('../photos/hero/hero-accueil.jpg')"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__content">
+      <p class="label">Association</p>
+      <h1>Nos Bénévoles</h1>
+    </div>
+  </header>
+
+  <section class="section section--dark">
+    <div class="container">
+
+      <!-- INTRO -->
+      <div class="benevoles-intro fade-up">
+        <p class="label" style="margin-bottom:.6rem">Merci à eux</p>
+        <h2 style="color:var(--white);font-size:clamp(1.4rem,3vw,2rem);margin-bottom:1rem">Celles et ceux qui font vivre l'OHB</h2>
+        <div class="divider divider--center"></div>
+        <blockquote>
+          Sans eux, rien ne serait possible. Derrière chaque concert, chaque répétition, chaque événement, il y a des bénévoles qui donnent de leur temps, de leur énergie et de leur cœur pour que la musique continue de résonner à Beinheim et au-delà.
+        </blockquote>
+        <p style="color:rgba(255,255,255,.55);margin-top:1rem">
+          L'Orchestre d'Harmonie de Beinheim est une association loi 1901 qui vit grâce à l'engagement bénévole de ses membres. Qu'ils soient musiciens, organisateurs, techniciens ou simples passionnés, chacun contribue à sa façon à la vie de l'association.
+        </p>
+      </div>
+
+      <!-- GRILLE BÉNÉVOLES -->
+      <div class="benevoles-grid">
+
+        <!-- Carte 1 — à personnaliser -->
+        <article class="benevole-card fade-up">
+          <div class="benevole-card__photo--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="benevole-card__body">
+            <div class="benevole-card__name">Prénom Nom</div>
+            <div class="benevole-card__role">Rôle / Fonction</div>
+            <p class="benevole-card__text">Texte de remerciement personnalisé — remplacez ce texte par un mot de remerciement sincère pour cette personne.</p>
+          </div>
+        </article>
+
+        <!-- Carte 2 -->
+        <article class="benevole-card fade-up">
+          <div class="benevole-card__photo--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="benevole-card__body">
+            <div class="benevole-card__name">Prénom Nom</div>
+            <div class="benevole-card__role">Rôle / Fonction</div>
+            <p class="benevole-card__text">Texte de remerciement personnalisé — remplacez ce texte par un mot de remerciement sincère pour cette personne.</p>
+          </div>
+        </article>
+
+        <!-- Carte 3 -->
+        <article class="benevole-card fade-up">
+          <div class="benevole-card__photo--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="benevole-card__body">
+            <div class="benevole-card__name">Prénom Nom</div>
+            <div class="benevole-card__role">Rôle / Fonction</div>
+            <p class="benevole-card__text">Texte de remerciement personnalisé — remplacez ce texte par un mot de remerciement sincère pour cette personne.</p>
+          </div>
+        </article>
+
+        <!-- Carte 4 -->
+        <article class="benevole-card fade-up">
+          <div class="benevole-card__photo--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="benevole-card__body">
+            <div class="benevole-card__name">Prénom Nom</div>
+            <div class="benevole-card__role">Rôle / Fonction</div>
+            <p class="benevole-card__text">Texte de remerciement personnalisé — remplacez ce texte par un mot de remerciement sincère pour cette personne.</p>
+          </div>
+        </article>
+
+        <!-- Carte 5 -->
+        <article class="benevole-card fade-up">
+          <div class="benevole-card__photo--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="benevole-card__body">
+            <div class="benevole-card__name">Prénom Nom</div>
+            <div class="benevole-card__role">Rôle / Fonction</div>
+            <p class="benevole-card__text">Texte de remerciement personnalisé — remplacez ce texte par un mot de remerciement sincère pour cette personne.</p>
+          </div>
+        </article>
+
+        <!-- Carte 6 -->
+        <article class="benevole-card fade-up">
+          <div class="benevole-card__photo--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="white"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="benevole-card__body">
+            <div class="benevole-card__name">Prénom Nom</div>
+            <div class="benevole-card__role">Rôle / Fonction</div>
+            <p class="benevole-card__text">Texte de remerciement personnalisé — remplacez ce texte par un mot de remerciement sincère pour cette personne.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- MERCI COLLECTIF -->
+      <div class="merci-section fade-up">
+        <p class="label" style="margin-bottom:1rem">Un grand merci</p>
+        <h3 style="font-family:var(--ff-display);font-size:clamp(1.2rem,2.5vw,1.8rem);color:var(--white);margin-bottom:1.5rem">À tous nos bénévoles anonymes</h3>
+        <p>
+          Au-delà des visages que vous voyez ici, de nombreuses personnes contribuent discrètement à la vie de l'OHB : celles qui installent les chaises avant un concert, qui gèrent la sono, qui cuisinent pour les repas d'après-répétition, qui partagent nos publications sur les réseaux sociaux…
+          <br><br>
+          À toutes et à tous : <strong style="color:var(--white)">merci du fond du cœur.</strong>
+        </p>
+        <div style="margin-top:2rem">
+          <a href="contact.html" class="btn">Rejoindre l'équipe de bénévoles</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="40" height="40" />
+            <span class="footer__logo-text">Orchestre d'Harmonie de Beinheim</span>
+          </div>
+          <p>Association musicale fondée en 2001, l'OHB rassemble des musiciens passionnés autour d'un répertoire varié.</p>
+          <div class="footer__socials">
+            <a href="https://www.facebook.com/OHBeinheim" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/ohbeinheim" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://www.youtube.com/@OHBeinheim" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.47A3.01 3.01 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.01 3.01 0 002.12 2.13C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.47a3.01 3.01 0 002.12-2.13A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg></a>
+            <a href="mailto:ohbeinheim@gmail.com" class="footer__social-link" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></a>
+          </div>
+        </div>
+        <div><h4>Navigation</h4><ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="concerts.html">Concerts</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="benevoles.html">Bénévoles</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div><h4>Liens utiles</h4><ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="partenaires.html">Nos partenaires</a></li>
+          <li><a href="dossier-presse.html">Dossier de presse</a></li>
+          <li><a href="oae-oj.html">OAE / OJ</a></li>
+        </ul></div>
+        <div class="footer__address"><h4>Contact</h4><p>Orchestre d'Harmonie de Beinheim<br>Beinheim, Bas-Rhin (67)<br>Alsace, France<br><br><a href="mailto:ohbeinheim@gmail.com">ohbeinheim@gmail.com</a></p></div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Orchestre d'Harmonie de Beinheim — Association loi 1901</p>
+        <p><a href="mentions-legales.html">Mentions légales</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

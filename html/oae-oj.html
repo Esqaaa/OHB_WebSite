@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="OAE / Orchestre Junior de Beinheim — l'école de musique et les jeunes musiciens de l'OHB." />
+  <title>OAE / Orchestre Junior — OHB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .oae-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--dark-3);
+      margin-bottom: 3rem;
+    }
+    .oae-tab-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.45);
+      font-family: var(--ff-body);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      position: relative;
+      transition: color var(--transition);
+    }
+    .oae-tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .oae-tab-btn.active { color: var(--gold); }
+    .oae-tab-btn.active::after { opacity: 1; }
+    .oae-tab-content { display: none; }
+    .oae-tab-content.active { display: block; }
+
+    /* Hero interne */
+    .oae-hero-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+    @media (max-width: 768px) { .oae-hero-block { grid-template-columns: 1fr; } }
+
+    .oae-hero-block__img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--dark-3);
+    }
+    .oae-hero-block__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .oae-hero-block__text h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .oae-hero-block__text p {
+      color: rgba(255,255,255,.6);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: .95rem;
+    }
+
+    /* Infos pratiques */
+    .infos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin: 2rem 0 3rem;
+    }
+    .info-item {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-3);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+    .info-item__label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+    .info-item__value {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    /* Galerie mini */
+    .mini-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 500px) { .mini-gallery { grid-template-columns: 1fr 1fr; } }
+    .mini-gallery__item {
+      aspect-ratio: 1;
+      background: var(--dark-3);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .mini-gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+    .mini-gallery__item:hover img { transform: scale(1.06); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="50" height="50" />
+        <div class="nav__logo-text">OHB<span>Orchestre d'Harmonie de Beinheim</span></div>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="concerts.html">Concerts</a></li>
+        <li><a href="oae-oj.html" class="active">OAE / OJ</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="benevoles.html">Bénévoles</a></li>
+        <li><a href="partenaires.html">Partenaires</a></li>
+        <li><a href="dossier-presse.html">Dossier de presse</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="nav__mobile" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="concerts.html">Concerts</a></li>
+      <li><a href="oae-oj.html">OAE / OJ</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="benevoles.html">Bénévoles</a></li>
+      <li><a href="partenaires.html">Partenaires</a></li>
+      <li><a href="dossier-presse.html">Dossier de presse</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+    </ul>
+  </div>
+
+  <header class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('../photos/hero/hero-accueil.jpg')"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="container page-hero__content">
+      <p class="label">Jeunes musiciens</p>
+      <h1>OAE &amp; Orchestre Junior</h1>
+    </div>
+  </header>
+
+  <section class="section section--dark">
+    <div class="container">
+
+      <!-- ONGLETS -->
+      <div class="oae-tabs fade-up">
+        <button class="oae-tab-btn active" data-oaetab="tab-oae">OAE</button>
+        <button class="oae-tab-btn" data-oaetab="tab-oj">Orchestre Junior</button>
+      </div>
+
+      <!-- ── OAE ── -->
+      <div class="oae-tab-content active" id="tab-oae">
+
+        <div class="oae-hero-block fade-up">
+          <div class="oae-hero-block__img">
+            <img src="../photos/galerie/galerie-01.jpg" alt="OAE" loading="lazy" />
+          </div>
+          <div class="oae-hero-block__text">
+            <p class="label" style="margin-bottom:.6rem">OAE</p>
+            <h2>Orchestre d'Application et d'Éveil</h2>
+            <div class="divider"></div>
+            <p>
+              L'OAE est la formation destinée aux jeunes musiciens qui souhaitent découvrir la pratique collective dans un cadre bienveillant et progressif. C'est le premier pas vers l'orchestre principal.
+            </p>
+            <p>
+              Encadrés par des musiciens expérimentés de l'OHB, les participants apprennent les bases du jeu en ensemble : écoute, synchronisation, lecture de partitions et mise en scène.
+            </p>
+            <a href="contact.html" class="btn" style="margin-top:1rem">Inscrire mon enfant</a>
+          </div>
+        </div>
+
+        <div class="infos-grid fade-up">
+          <div class="info-item">
+            <div class="info-item__label">Âge</div>
+            <div class="info-item__value">À partir de X ans</div>
+          </div>
+          <div class="info-item">
+            <div class="info-item__label">Niveau requis</div>
+            <div class="info-item__value">Débutant / initié</div>
+          </div>
+          <div class="info-item">
+            <div class="info-item__label">Répétitions</div>
+            <div class="info-item__value">X fois par mois<br><span style="font-size:.85rem;color:rgba(255,255,255,.45)">À compléter</span></div>
+          </div>
+          <div class="info-item">
+            <div class="info-item__label">Lieu</div>
+            <div class="info-item__value">Beinheim, Bas-Rhin</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── ORCHESTRE JUNIOR ── -->
+      <div class="oae-tab-content" id="tab-oj">
+
+        <div class="oae-hero-block fade-up">
+          <div class="oae-hero-block__img">
+            <img src="../photos/galerie/galerie-02.jpg" alt="Orchestre Junior" loading="lazy" />
+          </div>
+          <div class="oae-hero-block__text">
+            <p class="label" style="margin-bottom:.6rem">Orchestre Junior</p>
+            <h2>La relève musicale de l'OHB</h2>
+            <div class="divider"></div>
+            <p>
+              L'Orchestre Junior est la formation intermédiaire entre l'OAE et l'orchestre principal. Il accueille les jeunes musiciens qui maîtrisent déjà les bases et souhaitent progresser dans un répertoire plus ambitieux.
+            </p>
+            <p>
+              Tremplin vers l'orchestre adulte, l'OJ participe à certains concerts et événements de l'association, permettant aux jeunes de vivre l'expérience de la scène.
+            </p>
+            <a href="contact.html" class="btn" style="margin-top:1rem">Rejoindre l'OJ</a>
+          </div>
+        </div>
+
+        <div class="infos-grid fade-up">
+          <div class="info-item">
+            <div class="info-item__label">Âge</div>
+            <div class="info-item__value">X à X ans</div>
+          </div>
+          <div class="info-item">
+            <div class="info-item__label">Niveau requis</div>
+            <div class="info-item__value">Initié / intermédiaire</div>
+          </div>
+          <div class="info-item">
+            <div class="info-item__label">Répétitions</div>
+            <div class="info-item__value">X fois par mois<br><span style="font-size:.85rem;color:rgba(255,255,255,.45)">À compléter</span></div>
+          </div>
+          <div class="info-item">
+            <div class="info-item__label">Lieu</div>
+            <div class="info-item__value">Beinheim, Bas-Rhin</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA INSCRIPTION -->
+      <div class="fade-up" style="background:var(--dark-2);border:1px solid var(--dark-3);border-radius:var(--radius);padding:2.5rem;text-align:center;margin-top:2rem">
+        <p class="label" style="margin-bottom:.8rem">Intéressé·e ?</p>
+        <h3 style="font-family:var(--ff-display);font-size:clamp(1.2rem,2.5vw,1.8rem);color:var(--white);margin-bottom:1rem">Rejoignez la famille OHB dès le plus jeune âge</h3>
+        <p style="color:rgba(255,255,255,.5);max-width:500px;margin:0 auto 2rem;font-size:.92rem;line-height:1.8">
+          Pour toute question sur les inscriptions, les niveaux requis ou les instruments acceptés, contactez-nous. Nous serons ravis de vous accueillir.
+        </p>
+        <a href="contact.html" class="btn">Nous contacter</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">
+            <img src="../photos/logo/logo-ohb.png" alt="Logo OHB" width="40" height="40" />
+            <span class="footer__logo-text">Orchestre d'Harmonie de Beinheim</span>
+          </div>
+          <p>Association musicale fondée en 2001, l'OHB rassemble des musiciens passionnés autour d'un répertoire varié.</p>
+          <div class="footer__socials">
+            <a href="https://www.facebook.com/OHBeinheim" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/ohbeinheim" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg></a>
+            <a href="https://www.youtube.com/@OHBeinheim" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.01 3.01 0 00-2.12-2.13C19.54 3.6 12 3.6 12 3.6s-7.54 0-9.38.47A3.01 3.01 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3.01 3.01 0 002.12 2.13C4.46 20.4 12 20.4 12 20.4s7.54 0 9.38-.47a3.01 3.01 0 002.12-2.13A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg></a>
+            <a href="mailto:ohbeinheim@gmail.com" class="footer__social-link" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></a>
+          </div>
+        </div>
+        <div><h4>Navigation</h4><ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="concerts.html">Concerts</a></li>
+          <li><a href="oae-oj.html">OAE / OJ</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div><h4>Liens utiles</h4><ul>
+          <li><a href="mentions-legales.html">Mentions légales</a></li>
+          <li><a href="partenaires.html">Nos partenaires</a></li>
+          <li><a href="dossier-presse.html">Dossier de presse</a></li>
+          <li><a href="benevoles.html">Bénévoles</a></li>
+        </ul></div>
+        <div class="footer__address"><h4>Contact</h4><p>Orchestre d'Harmonie de Beinheim<br>Beinheim, Bas-Rhin (67)<br>Alsace, France<br><br><a href="mailto:ohbeinheim@gmail.com">ohbeinheim@gmail.com</a></p></div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Orchestre d'Harmonie de Beinheim — Association loi 1901</p>
+        <p><a href="mentions-legales.html">Mentions légales</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+  <script>
+    // Onglets OAE / OJ
+    document.querySelectorAll('.oae-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.oae-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.oae-tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.oaetab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

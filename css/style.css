@@ -1,3 +1,8 @@
+/* ============================================================
+   ORCHESTRE D'HARMONIE DE BEINHEIM — style.css
+   Design: Luxe classique / Noir profond + Blanc / Cormorant + Lato
+   ============================================================ */
+
 /* ─── 1. VARIABLES & RESET ─────────────────────────────────── */
 :root {
   --gold:       #FFFFFF;
@@ -166,14 +171,14 @@ h4 { font-size: 1.2rem; }
 
 .nav__links {
   display: flex;
-  gap: 2.2rem;
+  gap: 1.4rem;
   list-style: none;
 }
 .nav__links a {
   color: rgba(255,255,255,.85);
-  font-size: .82rem;
+  font-size: .72rem;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   position: relative;
   padding-bottom: 4px;
