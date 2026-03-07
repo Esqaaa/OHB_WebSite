@@ -169,47 +169,43 @@ h4 { font-size: 1.2rem; }
   text-transform: uppercase;
 }
 
+/* Liens desktop — masqués, hamburger partout */
 .nav__links {
-  display: flex;
-  gap: 1.4rem;
-  list-style: none;
-}
-.nav__links a {
-  color: rgba(255,255,255,.85);
-  font-size: .72rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  position: relative;
-  padding-bottom: 4px;
-}
-.nav__links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--gold);
-  transition: width var(--transition);
-}
-.nav__links a:hover,
-.nav__links a.active {
-  color: var(--gold);
-}
-.nav__links a:hover::after,
-.nav__links a.active::after {
-  width: 100%;
+  display: none;
 }
 
-/* Burger */
+/* Burger — toujours visible */
 .nav__burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
   cursor: pointer;
   padding: 8px;
   background: none;
   border: none;
+  z-index: 1001;
+  position: relative;
+}
+.nav__burger::after {
+  content: 'Menu';
+  font-family: var(--ff-body);
+  font-size: .9rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  transition: color var(--transition);
+}
+.nav__burger:hover::after,
+.nav__burger.open::after {
+  color: var(--gold);
+}
+/* Les spans (les 3 traits) dans leur propre colonne */
+.nav__burger__lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 .nav__burger span {
   display: block;
@@ -222,27 +218,76 @@ h4 { font-size: 1.2rem; }
 .nav__burger.open span:nth-child(2) { opacity: 0; }
 .nav__burger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
-/* Mobile menu */
+/* Menu plein écran */
 .nav__mobile {
   display: none;
   position: fixed;
-  top: var(--nav-h);
-  left: 0; right: 0;
+  top: 0;
+  left: 0; right: 0; bottom: 0;
   background: rgba(13,13,13,.98);
-  padding: 2rem;
-  border-top: 1px solid var(--dark-3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 999;
+  padding: calc(var(--nav-h) + 2rem) 2rem 3rem;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.nav__mobile.open { display: block; }
-.nav__mobile ul { list-style: none; display: flex; flex-direction: column; gap: 1.2rem; }
+.nav__mobile.open {
+  display: flex;
+}
+.nav__mobile ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+.nav__mobile li {
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.nav__mobile li:first-child {
+  border-top: 1px solid rgba(255,255,255,.06);
+}
 .nav__mobile a {
-  color: var(--light);
-  font-size: 1.1rem;
+  display: block;
+  color: rgba(255,255,255,.75);
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .1em;
   text-transform: uppercase;
+  padding: 1.1rem 1rem;
+  transition: color var(--transition), background var(--transition), padding-left var(--transition);
 }
-.nav__mobile a:hover { color: var(--gold); }
+.nav__mobile a:hover,
+.nav__mobile a.active {
+  color: var(--gold);
+  background: rgba(255,255,255,.03);
+  padding-left: 1.5rem;
+}
+
+/* Animation d'entrée des items */
+.nav__mobile.open li {
+  animation: slideInItem .3s ease both;
+}
+.nav__mobile.open li:nth-child(1)  { animation-delay: .05s; }
+.nav__mobile.open li:nth-child(2)  { animation-delay: .09s; }
+.nav__mobile.open li:nth-child(3)  { animation-delay: .13s; }
+.nav__mobile.open li:nth-child(4)  { animation-delay: .17s; }
+.nav__mobile.open li:nth-child(5)  { animation-delay: .21s; }
+.nav__mobile.open li:nth-child(6)  { animation-delay: .25s; }
+.nav__mobile.open li:nth-child(7)  { animation-delay: .29s; }
+.nav__mobile.open li:nth-child(8)  { animation-delay: .33s; }
+.nav__mobile.open li:nth-child(9)  { animation-delay: .37s; }
+.nav__mobile.open li:nth-child(10) { animation-delay: .41s; }
+
+@keyframes slideInItem {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 /* ─── 5. HERO ────────────────────────────────────────────────── */
 .hero {
@@ -966,8 +1011,6 @@ h4 { font-size: 1.2rem; }
 
 @media (max-width: 768px) {
   :root { --nav-h: 65px; }
-  .nav__links { display: none; }
-  .nav__burger { display: flex; }
 
   .section { padding: 70px 0; }
 
