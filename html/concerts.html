@@ -510,35 +510,28 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../js/main.js" defer></script>
+  
   <script>
-    /**
-     * loadVideo() — Lazy-load YouTube avec referrerpolicy obligatoire (fix erreur 153).
-     * YouTube exige depuis fin 2025 un referrer valide pour les embeds.
-     * On utilise youtube-nocookie.com + referrerpolicy="strict-origin-when-cross-origin".
-     *
-     * ⚠️ IMPORTANT : ce fix fonctionne sur un serveur web (Netlify, GitHub Pages…).
-     * En local (file://), l'erreur 153 peut persister car le navigateur
-     * ne peut pas envoyer de referrer depuis un fichier local.
-     * → Testez toujours depuis un serveur (ex: "Live Server" dans VS Code).
-     */
     function loadVideo(wrapper) {
       const card    = wrapper.closest('[data-video-id]');
       const videoId = card?.dataset?.videoId;
       if (!videoId) return;
 
-      const iframe               = document.createElement('iframe');
-      iframe.src                 = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-      iframe.allow               = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen     = true;
-      iframe.title               = card.querySelector('h3')?.textContent || 'Vidéo OHB';
-      // ✅ FIX erreur 153 : envoie le referrer à YouTube
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.title = card.querySelector('h3')?.textContent || 'Vidéo OHB';
+
+      // Referrer OK mais pas obligatoire avec youtube.com
       iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
 
-      wrapper.innerHTML          = '';
+      wrapper.innerHTML = '';
       wrapper.appendChild(iframe);
-      wrapper.style.cursor       = 'default';
-      wrapper.onclick            = null;
+      wrapper.style.cursor = 'default';
+      wrapper.onclick = null;
     }
   </script>
+  
 </body>
 </html>
