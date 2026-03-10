@@ -1287,6 +1287,18 @@ body, .nav, .nav__mobile, .footer, .concert-card, .concert-full-card,
   }
 }
 
+/* Grille 3 colonnes responsive (répertoire, etc.) */
+.grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .grid-3col {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Theme toggle — mobile : icône seule, pas de label */
 @media (max-width: 480px) {
   .theme-toggle {
