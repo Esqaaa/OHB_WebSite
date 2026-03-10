@@ -13,10 +13,47 @@
     .partenaires-intro {
       text-align: center;
       max-width: 650px;
-      margin: 0 auto 4rem;
+      margin: 0 auto 3rem;
     }
 
-    /* Grille partenaires principaux */
+    /* Onglets */
+    .partenaires-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--dark-3);
+      margin-bottom: 3rem;
+      justify-content: center;
+    }
+    .partenaires-tab-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,.45);
+      font-family: var(--ff-body);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: .9rem 2.2rem;
+      cursor: pointer;
+      position: relative;
+      transition: color var(--transition);
+    }
+    .partenaires-tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .partenaires-tab-btn.active { color: var(--gold); }
+    .partenaires-tab-btn.active::after { opacity: 1; }
+    .partenaires-tab-content { display: none; }
+    .partenaires-tab-content.active { display: block; }
+
+    /* Grille partenaires */
     .partenaires-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -37,18 +74,17 @@
       box-shadow: var(--shadow-gold);
     }
     .partenaire-card__logo {
-      width: 100px;
+      width: 120px;
       height: 80px;
       object-fit: contain;
       margin: 0 auto 1.2rem;
       display: block;
-      filter: brightness(0) invert(1);
-      opacity: .7;
+      opacity: .85;
       transition: opacity var(--transition);
     }
     .partenaire-card:hover .partenaire-card__logo { opacity: 1; }
     .partenaire-card__logo--placeholder {
-      width: 100px;
+      width: 120px;
       height: 80px;
       background: var(--dark-3);
       margin: 0 auto 1.2rem;
@@ -77,40 +113,10 @@
       margin-bottom: .8rem;
     }
     .partenaire-card__desc {
-      font-size: .85rem;
+      font-size: .88rem;
       color: rgba(255,255,255,.5);
-      line-height: 1.6;
+      line-height: 1.7;
     }
-
-    /* Section partenaires secondaires (logos seuls) */
-    .partenaires-logos {
-      border-top: 1px solid var(--dark-3);
-      padding-top: 3rem;
-      margin-top: 1rem;
-    }
-    .partenaires-logos__grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .partenaires-logos__item {
-      background: var(--dark-2);
-      border: 1px solid var(--dark-3);
-      border-radius: var(--radius);
-      padding: 1.2rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 140px;
-      min-height: 70px;
-      font-size: .8rem;
-      color: rgba(255,255,255,.3);
-      letter-spacing: .08em;
-      transition: border-color var(--transition);
-    }
-    .partenaires-logos__item:hover { border-color: rgba(255,255,255,.25); }
 
     /* CTA partenariat */
     .partenariat-cta {
@@ -119,7 +125,7 @@
       border-radius: var(--radius);
       padding: 3rem;
       text-align: center;
-      margin-top: 4rem;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -142,7 +148,7 @@
         <li><a href="dossier-presse.html">Dossier de presse</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="nav__burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav__burger" id="navBurger" aria-label="Menu"></button>
     </div>
   </nav>
   <div class="nav__mobile" id="mobileMenu">
@@ -181,51 +187,84 @@
         </p>
       </div>
 
-      <!-- PARTENAIRES PRINCIPAUX -->
-      <div class="partenaires-grid">
-
-        <article class="partenaire-card fade-up">
-          <div class="partenaire-card__logo--placeholder">Logo</div>
-          <div class="partenaire-card__name">Commune de Beinheim</div>
-          <div class="partenaire-card__type">Collectivité locale</div>
-          <p class="partenaire-card__desc">La commune de Beinheim soutient l'OHB depuis sa création et met à disposition les infrastructures nécessaires à son fonctionnement.</p>
-        </article>
-
-        <article class="partenaire-card fade-up">
-          <div class="partenaire-card__logo--placeholder">Logo</div>
-          <div class="partenaire-card__name">Partenaire 2</div>
-          <div class="partenaire-card__type">Type de partenaire</div>
-          <p class="partenaire-card__desc">Description du partenariat — remplacez par le vrai texte.</p>
-        </article>
-
-        <article class="partenaire-card fade-up">
-          <div class="partenaire-card__logo--placeholder">Logo</div>
-          <div class="partenaire-card__name">Partenaire 3</div>
-          <div class="partenaire-card__type">Type de partenaire</div>
-          <p class="partenaire-card__desc">Description du partenariat — remplacez par le vrai texte.</p>
-        </article>
-
-        <article class="partenaire-card fade-up">
-          <div class="partenaire-card__logo--placeholder">Logo</div>
-          <div class="partenaire-card__name">Partenaire 4</div>
-          <div class="partenaire-card__type">Type de partenaire</div>
-          <p class="partenaire-card__desc">Description du partenariat — remplacez par le vrai texte.</p>
-        </article>
-
+      <!-- ONGLETS -->
+      <div class="partenaires-tabs fade-up">
+        <button class="partenaires-tab-btn active" data-ptab="tab-institutionnels">Partenaires institutionnels</button>
+        <button class="partenaires-tab-btn" data-ptab="tab-prives">Partenaires privés</button>
       </div>
 
-      <!-- AUTRES SOUTIENS -->
-      <div class="partenaires-logos fade-up">
-        <p class="label" style="text-align:center;margin-bottom:.5rem">Autres soutiens</p>
-        <h3 style="text-align:center;color:var(--white);font-family:var(--ff-display);font-size:1.4rem;margin-bottom:.5rem">Ils contribuent aussi à notre aventure</h3>
-        <div class="divider divider--center"></div>
-        <div class="partenaires-logos__grid">
-          <div class="partenaires-logos__item">Soutien 1</div>
-          <div class="partenaires-logos__item">Soutien 2</div>
-          <div class="partenaires-logos__item">Soutien 3</div>
-          <div class="partenaires-logos__item">Soutien 4</div>
-          <div class="partenaires-logos__item">Soutien 5</div>
-          <div class="partenaires-logos__item">Soutien 6</div>
+      <!-- ══ INSTITUTIONNELS ══ -->
+      <div class="partenaires-tab-content active" id="tab-institutionnels">
+        <div class="partenaires-grid">
+
+          <article class="partenaire-card fade-up">
+            <img class="partenaire-card__logo" src="../photos/partenaires_institutionnels/logo beinheim.png" alt="Commune de Beinheim" />
+            <div class="partenaire-card__name">Commune de Beinheim</div>
+            <div class="partenaire-card__type">Collectivité locale</div>
+            <p class="partenaire-card__desc">La commune de Beinheim soutient l'OHB depuis sa création et met à disposition les infrastructures nécessaires à son fonctionnement.</p>
+          </article>
+
+          <article class="partenaire-card fade-up">
+            <img class="partenaire-card__logo" src="../photos/partenaires_institutionnels/cea-logo.png" alt="Collectivité Européenne Alsace" />
+            <div class="partenaire-card__name">Collectivité Européenne Alsace</div>
+            <div class="partenaire-card__type">Partenaire institutionnel</div>
+            <p class="partenaire-card__desc">La Collectivité Européenne d'Alsace accompagne notre initiative en soutenant le développement de projets locaux, l'innovation territoriale et les actions favorisant l'attractivité du territoire.</p>
+          </article>
+
+          <article class="partenaire-card fade-up">
+            <img class="partenaire-card__logo" src="../photos/partenaires_institutionnels/cropped-Logo-Plaine-du-Rhin.png" alt="Plaine du Rhin" />
+            <div class="partenaire-card__name">Communauté de Communes Plaine du Rhin</div>
+            <div class="partenaire-card__type">Partenaire territorial</div>
+            <p class="partenaire-card__desc">La Communauté de Communes Plaine du Rhin soutient nos actions en faveur du développement local et de la dynamisation du territoire.</p>
+          </article>
+
+          <article class="partenaire-card fade-up">
+            <img class="partenaire-card__logo" src="../photos/partenaires_institutionnels/Grand_Est_Logo.png" alt="Région Grand Est" />
+            <div class="partenaire-card__name">Région Grand Est</div>
+            <div class="partenaire-card__type">Partenaire institutionnel</div>
+            <p class="partenaire-card__desc">La Région Grand Est soutient nos actions en faveur de l'innovation, de la formation et du développement territorial.</p>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- ══ PRIVÉS ══ -->
+      <div class="partenaires-tab-content" id="tab-prives">
+        <div class="partenaires-grid">
+
+          <article class="partenaire-card fade-up">
+            <div class="partenaire-card__logo--placeholder"> <img src="../photos/partenaires_privés/LOGO GROUPE VITAL.jpg.jpeg" alt="Groupe Vital" ></div>
+            <div class="partenaire-card__name">Groupe Vital</div>
+            <div class="partenaire-card__type">Entreprise / Sponsor</div>
+            <p class="partenaire-card__desc"> Le Groupe Vital accompagne notre projet en soutenant nos actions et en contribuant au 
+                  développement d’initiatives locales à fort impact. Ce partenariat permet de renforcer 
+                  notre capacité à proposer des solutions innovantes, tout en créant des synergies avec 
+                  un acteur engagé du tissu économique régional.
+            </p>
+          </article>
+
+          <article class="partenaire-card fade-up">
+            <div class="partenaire-card__logo--placeholder"> <img src="../photos/partenaires_privés/SaiHome.jpeg" alt="SaiHome"> </div>
+            <div class="partenaire-card__name">Partenaire privé 2</div>
+            <div class="partenaire-card__type">Entreprise / Sponsor</div>
+            <p class="partenaire-card__desc">SaiHome soutient notre initiative en contribuant au développement de projets locaux et en 
+                  accompagnant nos actions sur le terrain. Grâce à ce partenariat, nous renforçons notre capacité 
+                  à proposer des solutions innovantes et à collaborer avec un acteur engagé dans l’amélioration 
+                  du cadre de vie et des services de proximité.
+            </p>
+          </article>
+
+          <article class="partenaire-card fade-up">
+            <div class="partenaire-card__logo--placeholder"> <img src="../photos/partenaires_privés/garage_modery.jpg" alt="Garage Modery"> </div>
+            <div class="partenaire-card__name">Garage Modery</div>
+            <div class="partenaire-card__type">Entreprise / Sponsor</div>
+            <p class="partenaire-card__desc">Le Garage Modery soutient notre projet en mettant en avant son engagement local et son 
+                  accompagnement des initiatives régionales. Ce partenariat renforce notre capacité à développer 
+                  des actions concrètes sur le terrain, tout en collaborant avec un acteur reconnu pour son 
+                  professionnalisme et sa proximité avec les habitants du territoire.
+            </p>
+          </article>
+
         </div>
       </div>
 
@@ -282,5 +321,15 @@
   </footer>
 
   <script src="../js/main.js" defer></script>
+  <script>
+    document.querySelectorAll('.partenaires-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.partenaires-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.partenaires-tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.ptab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
