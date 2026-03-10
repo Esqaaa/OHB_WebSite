@@ -28,6 +28,9 @@
   --radius: 4px;
   --nav-h: 80px;
   --transition: .35s cubic-bezier(.4,0,.2,1);
+
+  /* Variable pour les textes inline rgba(255,255,255,X) */
+  --txt-rgb: 255,255,255;
 }
 
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1047,6 +1050,7 @@ h4 { font-size: 1.2rem; }
   --shadow-gold: 0 4px 30px rgba(58,42,26,.12);
   --shadow-sm:   0 2px 12px rgba(58,42,26,.12);
   --shadow-lg:   0 8px 40px rgba(58,42,26,.18);
+  --txt-rgb:    42,26,14;
 }
 
 [data-theme="light"] body {
@@ -1145,6 +1149,17 @@ h4 { font-size: 1.2rem; }
 [data-theme="light"] .footer__address a:hover { color: var(--noir); }
 [data-theme="light"] .footer__social-link { border-color: rgba(250,247,242,.25); color: rgba(250,247,242,.7); }
 [data-theme="light"] .footer__social-link:hover { border-color: var(--noir); color: var(--noir); }
+/* Icônes sociales hors footer (page contact) — fond clair = icônes sombres */
+[data-theme="light"] .contact-info .footer__social-link {
+  border-color: rgba(58,42,26,.25);
+  color: rgba(42,26,14,.65);
+  background: transparent;
+}
+[data-theme="light"] .contact-info .footer__social-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(58,42,26,.06);
+}
 [data-theme="light"] .footer__bottom { border-top-color: rgba(250,247,242,.15); color: rgba(250,247,242,.4); }
 [data-theme="light"] .footer__bottom a { color: rgba(250,247,242,.4); }
 [data-theme="light"] .footer__bottom a:hover { color: var(--noir); }
@@ -1243,4 +1258,28 @@ body, .nav, .nav__mobile, .footer, .concert-card, .concert-full-card,
 .gallery-item__overlay, .lightbox, .recrutement, .partenaire-card,
 .benevole-card, .presse-block, .contact-presse, .info-item {
   transition: background-color .4s ease, border-color .4s ease, color .3s ease, box-shadow .4s ease;
+}
+
+/* Tous les .footer__social-link qui ne sont PAS dans .footer (fond sombre) */
+[data-theme="light"] .section .footer__social-link,
+[data-theme="light"] .contact-grid .footer__social-link {
+  border-color: rgba(58,42,26,.25) !important;
+  color: rgba(42,26,14,.65) !important;
+  background: transparent !important;
+}
+[data-theme="light"] .section .footer__social-link:hover,
+[data-theme="light"] .contact-grid .footer__social-link:hover {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+  background: rgba(58,42,26,.06) !important;
+}
+/* Theme toggle — mobile : icône seule, pas de label */
+@media (max-width: 480px) {
+  .theme-toggle {
+    padding: .38rem .5rem;
+    margin-left: .3rem;
+  }
+  .theme-toggle #themeLabel {
+    display: none;
+  }
 }
