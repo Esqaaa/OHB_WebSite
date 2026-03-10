@@ -1,21 +1,25 @@
+/* ============================================================
+   ORCHESTRE D'HARMONIE DE BEINHEIM — main.js
+   ============================================================ */
 
+/* ─── 1. NAVIGATION ─────────────────────────────────────────── */
 const nav     = document.getElementById('nav');
 const burger  = document.getElementById('navBurger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-
+// Scroll → add .scrolled class
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
-
+// Burger toggle
 burger?.addEventListener('click', () => {
   burger.classList.toggle('open');
   mobileMenu.classList.toggle('open');
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 });
 
-
+// Close mobile menu on link click
 document.querySelectorAll('#mobileMenu a').forEach(link => {
   link.addEventListener('click', () => {
     burger.classList.remove('open');
@@ -24,13 +28,13 @@ document.querySelectorAll('#mobileMenu a').forEach(link => {
   });
 });
 
-
+// Active nav link
 const currentPage = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav__links a, #mobileMenu a').forEach(a => {
   if (a.getAttribute('href') === currentPage) a.classList.add('active');
 });
 
-
+/* ─── 2. SCROLL ANIMATIONS ───────────────────────────────────── */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -42,7 +46,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-up, .timeline-item').forEach(el => observer.observe(el));
 
-
+/* ─── 3. LIGHTBOX ────────────────────────────────────────────── */
 const lightbox   = document.getElementById('lightbox');
 const lbImg      = document.getElementById('lbImg');
 const lbClose    = document.getElementById('lbClose');
@@ -100,7 +104,7 @@ galleryItems.forEach((item, idx) => {
   item.addEventListener('keydown', e => { if (e.key === 'Enter') item.click(); });
 });
 
-
+/* ─── 4. COUNTER ANIMATION ───────────────────────────────────── */
 function animateCounter(el) {
   const target = +el.dataset.target;
   const duration = 1800;
@@ -127,7 +131,7 @@ if (counters.length) {
   counters.forEach(c => counterObs.observe(c));
 }
 
-
+/* ─── 5. TABS (concerts page) ────────────────────────────────── */
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -137,7 +141,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-
+/* ─── 6. CONTACT FORM ────────────────────────────────────────── */
 const contactForm = document.getElementById('contactForm');
 contactForm?.addEventListener('submit', e => {
   e.preventDefault();
@@ -173,7 +177,7 @@ contactForm?.querySelectorAll('input, textarea').forEach(el => {
   el.addEventListener('input', () => el.closest('.form-group')?.classList.remove('has-error'));
 });
 
-
+/* ─── 7. GALLERY FILTER ──────────────────────────────────────── */
 document.querySelectorAll('.filter-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -190,27 +194,57 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-
+/* ─── 8. STAGGER CHILDREN FADE ───────────────────────────────── */
 document.querySelectorAll('.stagger-children > *').forEach((child, i) => {
   child.style.animationDelay = `${i * 0.1}s`;
   child.classList.add('fade-up');
   observer.observe(child);
 });
 
+// ─── THEME TOGGLE ──────────────────────────────────────────────
+(function () {
+  const STORAGE_KEY = 'ohb-theme';
+  const root        = document.documentElement;
 
-function loadVideo(wrapper) {
-      const card    = wrapper.closest('[data-video-id]');
-      const videoId = card?.dataset?.videoId;
-      if (!videoId) return;
+  const MOON_PATH = '<path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>';
+  const SUN_PATH  = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10A5 5 0 0012 7z"/>';
 
-      const iframe           = document.createElement('iframe');
-      iframe.src             = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-      iframe.allow           = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.allowFullscreen = true;
-      iframe.title           = card.querySelector('h3')?.textContent || 'Vidéo OHB';
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      root.setAttribute('data-theme', 'light');
+    } else {
+      root.removeAttribute('data-theme');
+    }
+    const btn   = document.getElementById('themeToggle');
+    const icon  = document.getElementById('themeIcon');
+    const label = document.getElementById('themeLabel');
+    if (!btn) return;
+    if (theme === 'light') {
+      icon.innerHTML    = MOON_PATH;
+      label.textContent = 'Sombre';
+    } else {
+      icon.innerHTML    = SUN_PATH;
+      label.textContent = 'Clair';
+    }
+  }
 
-      wrapper.innerHTML      = '';
-      wrapper.appendChild(iframe);
-      wrapper.style.cursor   = 'default';
-      wrapper.onclick        = null;
-}
+  const saved = localStorage.getItem(STORAGE_KEY) || 'dark';
+  applyTheme(saved);
+
+  function attachToggle() {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      const next    = current === 'light' ? 'dark' : 'light';
+      localStorage.setItem(STORAGE_KEY, next);
+      applyTheme(next);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachToggle);
+  } else {
+    attachToggle();
+  }
+})();

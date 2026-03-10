@@ -1031,3 +1031,216 @@ h4 { font-size: 1.2rem; }
   .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
   .stats__grid  { grid-template-columns: 1fr 1fr; }
 }
+
+/* ─── 22. THÈME CLAIR [data-theme="light"] ───────────────────── */
+[data-theme="light"] {
+  --gold:       #3A2A1A;
+  --gold-light: #5C4030;
+  --gold-pale:  #8A6A50;
+  --noir:       #FAF7F2;
+  --dark:       #F3EDE4;
+  --dark-2:     #EDE5D8;
+  --dark-3:     #D9CEBA;
+  --mid:        #9A8A78;
+  --light:      #2A1A0E;
+  --white:      #1A0E05;
+  --shadow-gold: 0 4px 30px rgba(58,42,26,.12);
+  --shadow-sm:   0 2px 12px rgba(58,42,26,.12);
+  --shadow-lg:   0 8px 40px rgba(58,42,26,.18);
+}
+
+[data-theme="light"] body {
+  background: var(--noir);
+  color: var(--light);
+}
+
+[data-theme="light"] .nav {
+  background: rgba(250,247,242,.92);
+  backdrop-filter: blur(10px);
+}
+[data-theme="light"] .nav.scrolled {
+  background: rgba(250,247,242,.98);
+  box-shadow: 0 2px 20px rgba(58,42,26,.1);
+  border-bottom: 1px solid var(--dark-3);
+}
+[data-theme="light"] .nav__logo-text { color: #1A0E05; }
+[data-theme="light"] .nav__logo img  { filter: invert(1) sepia(1) saturate(0) brightness(0.25); }
+[data-theme="light"] .nav__burger::after { color: rgba(42,26,14,.65); }
+[data-theme="light"] .nav__burger span  { background: var(--gold); }
+[data-theme="light"] .nav__mobile { background: rgba(250,247,242,.98); }
+[data-theme="light"] .nav__mobile li { border-bottom-color: var(--dark-3); }
+[data-theme="light"] .nav__mobile li:first-child { border-top-color: var(--dark-3); }
+[data-theme="light"] .nav__mobile a { color: rgba(42,26,14,.6); }
+[data-theme="light"] .nav__mobile a:hover,
+[data-theme="light"] .nav__mobile a.active { color: var(--gold); background: rgba(58,42,26,.04); }
+
+[data-theme="light"] .hero__bg   { filter: brightness(.55) sepia(.2); }
+[data-theme="light"] .hero__overlay { background: linear-gradient(135deg,rgba(250,247,242,.55) 0%,rgba(250,247,242,.1) 60%,rgba(58,42,26,.05) 100%); }
+[data-theme="light"] .hero h1    { color: #FAF7F2; }
+[data-theme="light"] .hero__sub  { color: rgba(250,247,242,.85); }
+[data-theme="light"] .hero__tag  { color: #FAF7F2; background: rgba(58,42,26,.75); }
+[data-theme="light"] .hero__tag::before { background: rgba(250,247,242,.7); }
+[data-theme="light"] .hero__scroll { color: rgba(250,247,242,.55); }
+[data-theme="light"] .hero__scroll svg { stroke: rgba(250,247,242,.7); }
+[data-theme="light"] .hero .btn  { border-color: rgba(250,247,242,.85); color: rgba(250,247,242,.85); }
+[data-theme="light"] .hero .btn:hover { background: rgba(250,247,242,.9); color: var(--gold); border-color: rgba(250,247,242,.9); }
+[data-theme="light"] .hero .btn--filled { background: rgba(250,247,242,.9); color: var(--gold); border-color: rgba(250,247,242,.9); }
+
+[data-theme="light"] .section-header p { color: rgba(42,26,14,.65); }
+[data-theme="light"] .about-strip__content { border-left: 1px solid var(--dark-3); }
+[data-theme="light"] .about-strip__content p { color: rgba(42,26,14,.7); }
+
+[data-theme="light"] .stats .stat__label { color: rgba(250,247,242,.75); }
+[data-theme="light"] .stats .stat__num   { color: var(--noir); }
+
+[data-theme="light"] .concert-card { background: var(--noir); box-shadow: var(--shadow-sm); }
+[data-theme="light"] .concert-card__body p { color: rgba(42,26,14,.65); }
+[data-theme="light"] .concert-full-card { background: var(--noir); box-shadow: var(--shadow-sm); }
+[data-theme="light"] .concert-full-card:hover { border-color: var(--gold-pale); }
+[data-theme="light"] .concert-full-card__body p { color: rgba(42,26,14,.65); }
+[data-theme="light"] .concert-badge--future { background: rgba(58,42,26,.08); color: var(--gold); border-color: var(--dark-3); }
+[data-theme="light"] .concert-badge--past   { background: rgba(58,42,26,.04); color: var(--gold-pale); border-color: var(--dark-3); }
+
+[data-theme="light"] .gallery-item__overlay { background: rgba(58,42,26,.35); }
+[data-theme="light"] .gallery-item__overlay svg { stroke: #FAF7F2; }
+
+[data-theme="light"] .lightbox { background: rgba(250,247,242,.96); }
+[data-theme="light"] .lightbox__close { border-color: var(--dark-3); color: var(--gold); }
+[data-theme="light"] .lightbox__prev,
+[data-theme="light"] .lightbox__next { background: rgba(58,42,26,.06); border-color: var(--dark-3); color: var(--gold); }
+[data-theme="light"] .lightbox__prev:hover,
+[data-theme="light"] .lightbox__next:hover { background: var(--gold); border-color: var(--gold); color: var(--noir); }
+
+[data-theme="light"] .timeline::before { background: linear-gradient(to bottom,transparent,var(--gold-pale),transparent); }
+[data-theme="light"] .timeline-dot { background: var(--dark-2); border-color: var(--gold-pale); }
+[data-theme="light"] .timeline-dot::before { background: var(--gold-pale); }
+[data-theme="light"] .timeline-year { color: var(--gold); }
+[data-theme="light"] .timeline-content p { color: rgba(42,26,14,.65); }
+
+[data-theme="light"] .recrutement { background: var(--noir); box-shadow: var(--shadow-sm); }
+[data-theme="light"] .instruments-list span { background: var(--dark-2); border-color: var(--dark-3); }
+
+[data-theme="light"] .form-group label { color: rgba(42,26,14,.55); }
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea,
+[data-theme="light"] .form-group select { background: var(--noir); border-color: var(--dark-3); color: var(--light); }
+[data-theme="light"] .form-group input:focus,
+[data-theme="light"] .form-group textarea:focus,
+[data-theme="light"] .form-group select:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(58,42,26,.1); }
+[data-theme="light"] .form-group .error { color: #c0392b; }
+[data-theme="light"] .form-success { background: rgba(58,42,26,.08); border-color: var(--gold-pale); color: var(--gold); }
+
+[data-theme="light"] .contact-info-item { color: rgba(42,26,14,.7); }
+[data-theme="light"] .contact-info-item svg { stroke: var(--gold-pale); }
+
+[data-theme="light"] .footer { background: var(--gold); border-top-color: rgba(250,247,242,.15); }
+[data-theme="light"] .footer__logo-text { color: var(--noir); }
+[data-theme="light"] .footer__logo img { filter: brightness(0) invert(1); }
+[data-theme="light"] .footer h4 { color: rgba(250,247,242,.55); }
+[data-theme="light"] .footer__brand p { color: rgba(250,247,242,.65); }
+[data-theme="light"] .footer ul li a { color: rgba(250,247,242,.75); }
+[data-theme="light"] .footer ul li a:hover { color: var(--noir); }
+[data-theme="light"] .footer__address p { color: rgba(250,247,242,.75); }
+[data-theme="light"] .footer__address a { color: rgba(250,247,242,.75); }
+[data-theme="light"] .footer__address a:hover { color: var(--noir); }
+[data-theme="light"] .footer__social-link { border-color: rgba(250,247,242,.25); color: rgba(250,247,242,.7); }
+[data-theme="light"] .footer__social-link:hover { border-color: var(--noir); color: var(--noir); }
+[data-theme="light"] .footer__bottom { border-top-color: rgba(250,247,242,.15); color: rgba(250,247,242,.4); }
+[data-theme="light"] .footer__bottom a { color: rgba(250,247,242,.4); }
+[data-theme="light"] .footer__bottom a:hover { color: var(--noir); }
+
+[data-theme="light"] .page-hero__bg { filter: brightness(.45) sepia(.15); }
+[data-theme="light"] .page-hero__overlay { background: linear-gradient(to top,rgba(58,42,26,.75) 0%,transparent 60%); }
+[data-theme="light"] .page-hero h1 { color: #FAF7F2; }
+[data-theme="light"] .page-hero .label { color: rgba(250,247,242,.7); }
+
+[data-theme="light"] .tab-btn { color: rgba(42,26,14,.45); }
+[data-theme="light"] .tab-btn.active { color: var(--gold); }
+[data-theme="light"] .filter-btn { border-color: var(--dark-3); color: rgba(42,26,14,.55); }
+[data-theme="light"] .filter-btn:hover,
+[data-theme="light"] .filter-btn.active { border-color: var(--gold); color: var(--gold); background: rgba(58,42,26,.06); }
+
+[data-theme="light"] .legal-content p { color: rgba(42,26,14,.7); }
+[data-theme="light"] .legal-content a { color: var(--gold); }
+
+/* Pages spécifiques */
+[data-theme="light"] .partenaire-card    { background: var(--noir); box-shadow: var(--shadow-sm); }
+[data-theme="light"] .partenaire-card:hover { border-color: var(--gold-pale); }
+[data-theme="light"] .partenaire-card__desc { color: rgba(42,26,14,.55); }
+[data-theme="light"] .partenaire-card__logo--placeholder { background: var(--dark-2); color: rgba(42,26,14,.35); }
+[data-theme="light"] .partenariat-cta   { background: var(--noir); border-color: var(--dark-3); }
+[data-theme="light"] .benevole-card     { background: var(--noir); box-shadow: var(--shadow-sm); }
+[data-theme="light"] .benevole-card:hover { border-color: var(--gold-pale); }
+[data-theme="light"] .benevole-card__text { color: rgba(42,26,14,.5); }
+[data-theme="light"] .benevole-card__photo--placeholder { background: var(--dark-2); }
+[data-theme="light"] .merci-section     { border-top-color: var(--dark-3); }
+[data-theme="light"] .merci-section p   { color: rgba(42,26,14,.55); }
+[data-theme="light"] .benevoles-intro blockquote { background: var(--dark-2); border-left-color: var(--gold-pale); }
+[data-theme="light"] .presse-block      { background: var(--noir); border-color: var(--dark-3); box-shadow: var(--shadow-sm); }
+[data-theme="light"] .presse-block h3   { border-bottom-color: var(--dark-3); }
+[data-theme="light"] .presse-block p    { color: rgba(42,26,14,.55); }
+[data-theme="light"] .download-btn      { background: var(--dark-2); border-color: var(--dark-3); color: var(--gold); }
+[data-theme="light"] .download-btn:hover { border-color: var(--gold); background: rgba(58,42,26,.06); }
+[data-theme="light"] .download-btn__meta { color: rgba(42,26,14,.4); }
+[data-theme="light"] .download-btn__icon { background: var(--dark-3); }
+[data-theme="light"] .contact-presse    { background: var(--noir); border-color: var(--dark-3); }
+[data-theme="light"] .contact-presse p  { color: rgba(42,26,14,.55); }
+[data-theme="light"] .oae-tab-btn       { color: rgba(42,26,14,.45); }
+[data-theme="light"] .oae-tab-btn.active { color: var(--gold); }
+[data-theme="light"] .oae-tab-btn::after { background: var(--gold); }
+[data-theme="light"] .oae-hero-block__text p { color: rgba(42,26,14,.65); }
+[data-theme="light"] .info-item         { background: var(--noir); border-color: var(--dark-3); }
+[data-theme="light"] .partenaires-tab-btn { color: rgba(42,26,14,.45); }
+[data-theme="light"] .partenaires-tab-btn.active { color: var(--gold); }
+[data-theme="light"] .partenaires-tab-btn::after { background: var(--gold); }
+[data-theme="light"] .partenaires-tabs  { border-bottom-color: var(--dark-3); }
+[data-theme="light"] .concerts-tabs     { border-bottom-color: var(--dark-3); }
+[data-theme="light"] .oae-tabs          { border-bottom-color: var(--dark-3); }
+
+/* Bouton thème — commun aux deux thèmes */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px;
+  padding: .38rem .85rem .38rem .7rem;
+  font-family: var(--ff-body);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  transition: all var(--transition);
+  margin-left: .6rem;
+  white-space: nowrap;
+}
+.theme-toggle:hover {
+  border-color: rgba(255,255,255,.5);
+  color: #fff;
+  background: rgba(255,255,255,.06);
+}
+.theme-toggle svg {
+  flex-shrink: 0;
+  transition: transform .5s ease;
+}
+.theme-toggle:hover svg { transform: rotate(20deg); }
+
+[data-theme="light"] .theme-toggle {
+  border-color: rgba(58,42,26,.25);
+  color: rgba(42,26,14,.65);
+}
+[data-theme="light"] .theme-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(58,42,26,.05);
+}
+
+/* Transition douce lors du changement */
+body, .nav, .nav__mobile, .footer, .concert-card, .concert-full-card,
+.gallery-item__overlay, .lightbox, .recrutement, .partenaire-card,
+.benevole-card, .presse-block, .contact-presse, .info-item {
+  transition: background-color .4s ease, border-color .4s ease, color .3s ease, box-shadow .4s ease;
+}

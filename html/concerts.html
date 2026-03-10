@@ -141,6 +141,10 @@
       
       </ul>
       <button class="nav__burger" id="navBurger" aria-label="Menu"></button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème"><svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" 
+        stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-
+        .707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10A5 5 0 0012 7z"/></svg><span id="themeLabel">Clair</span>
+      </button>
     </div>
   </nav>
   <div class="nav__mobile" id="mobileMenu">
@@ -209,7 +213,7 @@
         
 
         <div class="fade-up" style="background:var(--dark-2);border:1px solid var(--dark-3);border-radius:4px;padding:2rem;text-align:center;margin-top:1rem">
-          <p style="color:rgba(255,255,255,.6);margin-bottom:1rem">Les dates précises seront communiquées prochainement. Suivez-nous sur les réseaux sociaux pour ne rien manquer.</p>
+          <p class="label">Les dates précises seront communiquées prochainement. Suivez-nous sur les réseaux sociaux pour ne rien manquer.</p><br>
           <a href="contact.html" class="btn">Être informé des prochains concerts</a>
         </div>
 
@@ -262,8 +266,9 @@
             <p class="label">Décembre 2023</p>
             <h3>Concert de Noël 2023</h3>
             <p>Un programme festif et émouvant pour clôturer l'année 2023 avec brio. L'orchestre avait réuni plus de 200 spectateurs pour une soirée mémorable.</p>
-            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.5)">
-              <span>📅 Décembre 2023 · 📍 Beinheim</span>
+            <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Décembre 2023</span>
+              <span>📍 Beinheim</span>
             </div>
           </div>
         </article>
@@ -277,8 +282,9 @@
             <p class="label">Printemps 2023</p>
             <h3>Concert de Printemps 2023</h3>
             <p>Au programme : les musiques de <em>Star Wars</em>, <em>Le Roi Lion</em> et un medley des plus grands films de John Williams, acclamé par le public.</p>
-            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.5)">
-              <span>📅 Mai 2023 · 📍 Beinheim</span>
+            <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Mai 2023</span>
+              <span>📍 Beinheim</span>
             </div>
           </div>
         </article>
@@ -292,8 +298,9 @@
             <p class="label">Juin 2019</p>
             <h3>Fête de l'École 2019</h3>
             <p>L'OHB a animé la fête de l'école de Beinheim, proposant un programme léger et festif pour les petits et les grands, dans une ambiance conviviale.</p>
-            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.5)">
-              <span>📅 Juin 2019 · 📍 Beinheim</span>
+            <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Juin 2019 </span>
+              <span>📍 Beinheim</span>
             </div>
           </div>
         </article>
@@ -307,8 +314,9 @@
             <p class="label">Hiver 2022</p>
             <h3>Concert de Noël 2022</h3>
             <p>Une soirée chaleureuse autour des musiques de Noël revisitées et d'un programme classique, en présence d'un public nombreux et enthousiaste.</p>
-            <div style="margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.5)">
-              <span>📅 Décembre 2022 · 📍 Beinheim</span>
+            <div style="margin-top:1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:.85rem;color:var(--gold)">
+              <span>📅 Décembre 2022</span>
+              <span>📍 Beinheim</span>
             </div>
           </div>
         </article>
@@ -322,7 +330,7 @@
           <p class="label" style="margin-bottom:.6rem">Extraits vidéo</p>
           <h2 style="color:var(--white);font-size:clamp(1.4rem,3vw,2rem)">L'OHB en vidéo</h2>
           <div class="divider"></div>
-          <p style="color:rgba(255,255,255,.6);max-width:560px">
+          <p class="label">
             Cliquez sur une vignette pour lancer la vidéo.
           </p>
         </div>
