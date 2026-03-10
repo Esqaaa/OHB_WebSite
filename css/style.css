@@ -1273,6 +1273,20 @@ body, .nav, .nav__mobile, .footer, .concert-card, .concert-full-card,
   color: var(--gold) !important;
   background: rgba(58,42,26,.06) !important;
 }
+/* Grille 2 colonnes responsive (a-propos présentation) */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
 /* Theme toggle — mobile : icône seule, pas de label */
 @media (max-width: 480px) {
   .theme-toggle {
@@ -1281,5 +1295,27 @@ body, .nav, .nav__mobile, .footer, .concert-card, .concert-full-card,
   }
   .theme-toggle #themeLabel {
     display: none;
+  }
+}
+
+/* ─── GRILLES INLINE RESPONSIVE (mobile fix) ────────────────── */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.grid-2col-sm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 768px) {
+  .grid-2col {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .grid-2col-sm {
+    grid-template-columns: 1fr;
   }
 }
